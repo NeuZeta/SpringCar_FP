@@ -40,8 +40,8 @@
 						<label for="finalDate">Delivery date:</label>
 						<input type="date" name="finalDate" id="finalDate" step="1" min="2019-06-01" max="2020-06-01" value="2019-06-01" required>
 					</div>
-					<div class="col-12 col-md-1">
-						<button type="submit" class="btn font-weight-bold">Submit</button>
+					<div class="col-12 col-md-2">
+						<button type="submit" class="btn font-weight-bold float-right" >Submit</button>
 					</div>
 					<div class="col-6 ml-auto p-2" th:if="${session.errorDates != null}">
 						<span class="form-control" id="passwordHelp" th:text="${session.errorDates}"></span>

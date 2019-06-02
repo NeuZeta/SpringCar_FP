@@ -10,3 +10,20 @@ body {
 #sticky-footer {
   flex-shrink: none;
 }
+
+.btn {
+	color: white;
+    background-color: #a0b900;
+    border-radius: 0;
+}
+
+.btn:hover {
+	color:white;
+    background-color: #809400;
+}
+
+/*<!--Bootstrap Custom checkbox-->*/
+.custom-control-input:checked~.custom-control-label::before {
+    border-color: green;
+    background-color: green;
+}
