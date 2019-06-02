@@ -1,62 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/header :: headerFragment">
-	<title id="pageTitle">SpringCar | Login</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base}">
+
+<head>
+<title>Home page</title>
 </head>
 
+<div layout:fragment="page_content" id="page_content">
 
-<body>
-	<div class="container bg-light">
+	<!-- LOGIN MENU -->
+	<!-- 	<form th:action="@{/user/login}" th:object="${login}" method="post"> -->
+	<!-- 		<div class="form-group form-row mt-5"> -->
+	<!-- 			<div class="col-12"> -->
+	<!-- 				<label for="userName">Username</label> -->
+	<!-- 				<input type="text" class="form-control" id="userName" aria-describedby="userNameHelp" name="userName" placeholder="Enter username" required> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
 
-		<!-- NAVBAR -->
-		<div th:replace="fragments/navbar.html :: navbar"></div>
+	<!-- 		<div class="form-group form-row"> -->
+	<!-- 			<div class="col-12"> -->
+	<!-- 				<label for="password">Password</label> -->
+	<!-- 				<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Enter password" aria-required="true" required> -->
+	<!-- 				                <p id="passwordHelp" class="form-control">Password should be XX characters</p> -->
+	<!-- 				<span th:if="${session.error_userAuthentification != null}" th:text="${session.error_userAuthentification}" id="passwordHelp" class="form-control"></span> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 		<div class="col-12 text-center"> -->
+	<!-- 			<button type="submit" class="btn btn-lg">Login</button> -->
+	<!-- 		</div> -->
+
+	<!-- 	</form> -->
+	<!-- 	<div class="row"> -->
+	<!-- 		<div class="col-12 mt-4"> -->
+	<!-- 			<div class="text-center font-weight-normal">As a registered SpringCar customer, you can benefit from multiple advantages. If you still have not registered, do it here!</div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
+
+	<!-- 	<div class="col-12 mt-3 mb-5 text-center"> -->
+	<!-- 		<button type="button" class="btn btn-lg active"> -->
+	<!-- 			<a href="/user/registration" class="text text-reset text-decoration-none"> Registration </a> -->
+	<!-- 		</button> -->
+	<!-- 	</div> -->
 
 
-		<!-- LOGIN MENU -->
+	<div class="row align-items-center h-100">
+		<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+			<div class="card my-5">
+				<div class="card-body">
+					<h5 class="card-title text-center">Sign In</h5>
+					<form class="">
+						<div class="form-group">
+							<label for="inputEmail">Email address</label>						
+							<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+						</div>
 
-		<form th:action="@{/user/login}" th:object="${login}" method="post">
-			<div class="form-group form-row mt-5">
-				<div class="col-12">
-					<label for="userName">Username</label>
-					<input type="text" class="form-control" id="userName" aria-describedby="userNameHelp" name="userName" placeholder="Enter username" required>
+						<div class="form-group">
+							<label for="inputPassword">Password</label>						
+							<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+						</div>
+
+						<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+						<hr class="my-4">
+						<button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
+							<i class="fas fa-user-circle mr-2"></i> Register
+						</button>
+					</form>
 				</div>
 			</div>
-
-			<div class="form-group form-row">
-				<div class="col-12">
-					<label for="password">Password</label>
-					<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Enter password" aria-required="true" required>
-					<!--                 <p id="passwordHelp" class="form-control">Password should be XX characters</p> -->
-					<span th:if="${session.error_userAuthentification != null}" th:text="${session.error_userAuthentification}" id="passwordHelp" class="form-control"></span>
-				</div>
-			</div>
-			<div class="col-12 text-center">
-				<button type="submit" class="btn btn-lg">Login</button>
-			</div>
-
-		</form>
-
-		<div class="row">
-			<div class="col-12 mt-4">
-				<div class="text-center font-weight-normal">As a registered SpringCar customer, you can benefit from multiple advantages. If you still have not registered, do it here!</div>
-			</div>
 		</div>
-
-		<div class="col-12 mt-3 mb-5 text-center">
-			<button type="button" class="btn btn-lg active">
-				<a href="/user/registration" class="text text-reset text-decoration-none"> Registration </a>
-			</button>
-		</div>
-
-
-		<!-- FOOTER -->
-		<div th:replace="fragments/footer.html :: footer"></div>
-
-		<!-- FOOTER IMPORTS -->
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	</div>
-</body>
 
-</html>
+</div>
