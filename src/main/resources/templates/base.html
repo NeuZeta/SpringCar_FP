@@ -12,14 +12,14 @@
 <link href="/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
 
 </head>
-<body class="d-flex flex-column">
+<body class="d-flex flex-column bg-light">
 
 	<!-- NAVBAR -->
 	<div th:replace="fragments/navbar.html :: navbar"></div>
 
 	<!-- PAGE MAIN CONTENT -->
 	<div id="page-content" class="pt-5 mt-2">
-		<main role="main" class="container h-100"> <!-- PAGE CONTENT -->
+		<main role="main" class="h-100"> <!-- PAGE CONTENT -->
 		<div layout:fragment="page_content" class="h-100"></div>
 		</main>	
 	</div>
