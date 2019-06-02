@@ -1,29 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-
-<title>SpringCar | Confirmation</title>
-<link rel="shortcut icon" type="image/png"
-	href="static/images/favicon.png" />
-
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-	crossorigin="anonymous">
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
-
-<link href="static/css/styles.css" th:href="@{/css/styles.css}"
-	rel="stylesheet">
-
+<head th:include="fragments/header :: headerFragment">
+	<title id="pageTitle">SpringCar | Confirmation</title>
 </head>
 <body>
 	<div class="container bg-light">
@@ -88,7 +66,7 @@
 			</form>
 		</div>
 
-		<!-- MENÃš PAG. INDEX DATOS SELECCIONADOS DE HOME -->
+		<!-- MENÚ PAG. INDEX DATOS SELECCIONADOS DE HOME -->
 
 		<div id="carReservationStatement" class="row mt-5 ml-3 mr-3">
 			<div class="col-12 ">
@@ -188,7 +166,7 @@
 							<div class="h-100 d-flex align-items-end flex-column p-3">
 								<div class="h-100 d-flex align-items-center">
 									<Strong th:inline="text">
-										[[${session.car.category.priceBase}]]â‚¬ <small
+										[[${session.car.category.priceBase}]]€ <small
 										class="float-right pr-2">&nbsp per day</small>
 									</strong>
 								</div>
@@ -221,7 +199,7 @@
 						<div>
 							<span>Basic third party insurance</span> <span
 								class="float-right"
-								th:text="${session.car.category.priceBaseInsurance} + â‚¬"></span>
+								th:text="${session.car.category.priceBaseInsurance} + €"></span>
 						</div>
 					</li>
 					<li class="list-group-item bg-transparent"
@@ -229,14 +207,14 @@
 						<div>
 							<span>All risks covering insurance</span> <span
 								class="float-right"
-								th:text="${session.car.category.priceTopInsurance} + â‚¬"></span>
+								th:text="${session.car.category.priceTopInsurance} + €"></span>
 						</div>
 					</li>
 					<li class="list-group-item bg-transparent"
 						th:if="${session.reservation.tireAndGlassProtection != false}">
 						<div>
 							<span>Tire and glass protection</span> <span class="float-right"
-								th:text="${session.car.category.priceTireAndGlassProtection} + â‚¬"></span>
+								th:text="${session.car.category.priceTireAndGlassProtection} + €"></span>
 						</div>
 					</li>
 				</ul>
@@ -257,7 +235,7 @@
 						<div>
 							<span class="w-100" th:inline="text">
 								[[${extra.descriptionExtra}]]<span class="float-right"
-								th:text="${extra.price} + â‚¬"></span>
+								th:text="${extra.price} + €"></span>
 							</span>
 						</div>
 					</li>
@@ -276,23 +254,23 @@
 			<div class="col-12 ">
 				<div class="p-2 text-dark text-justify">
 					Car base price: <span th:inline="text">
-						[[${session.car.category.priceBase}]]â‚¬ x <span th:inline="text">[[${session.differenceInDays}]]
+						[[${session.car.category.priceBase}]]€ x <span th:inline="text">[[${session.differenceInDays}]]
 							days = <span
 							th:text="${#numbers.formatDecimal(sumCarBase, 0, 'POINT', 2, 'COMMA')}"></span>
 					</span>
-					</span><span>â‚¬</span>
+					</span><span>€</span>
 				</div>
 			</div>
 			<div class="col-12 ">
 				<div class="p-2 text-dark text-justify">
 					Insurance and Extras price: <span
-						th:text="${#numbers.formatDecimal(sumExtras, 0, 'POINT', 2, 'COMMA')}"></span><span>â‚¬</span>
+						th:text="${#numbers.formatDecimal(sumExtras, 0, 'POINT', 2, 'COMMA')}"></span><span>€</span>
 				</div>
 			</div>
 			<div class="col-12 ">
 				<div class="p-2 text-dark text-justify">
 					Total amount: <span
-						th:text="${#numbers.formatDecimal(sumRentPrice, 0, 'POINT', 2, 'COMMA')}"></span><span>â‚¬</span>
+						th:text="${#numbers.formatDecimal(sumRentPrice, 0, 'POINT', 2, 'COMMA')}"></span><span>€</span>
 				</div>
 			</div>
 		</div>

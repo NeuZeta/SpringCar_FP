@@ -1,63 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
-
-    <style>
-        body {
-            background-color: #e5ecb5;
-            color: green
-        }
-
-        .navbar-nav {
-            width: 100%;
-            text-align: center;
-
-        }
-
-        .navbar-nav > li {
-            float: none;
-            display: inline-block;
-        }
-
-        .navbar-dark .navbar-nav .nav-link {
-            color: white;
-        }
-
-        .navbar-dark .navbar-nav .nav-link:hover {
-            color: green;
-        }
-
-
-        .social-icons > li > a {
-            color: white;
-        }
-
-
-        .contact-info > li > a {
-            color: white;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        li > a:hover {
-            color: green;
-        }
-
-        option {
-            color: green;
-        }
-
-    </style>
+<head th:include="fragments/header :: headerFragment">
+	<title id="pageTitle">SpringCar | Companies</title>
 </head>
 
 
@@ -127,7 +71,7 @@
         </div>
     </div>
 
-    <!-- FOOTER COMÃšN A TODAS LAS PÃGS-->
+    <!-- FOOTER COMÚN A TODAS LAS PÁGS-->
 
     <footer class="row p-2 nav bg-dark text-success">
         <div class="col-6 float-left">

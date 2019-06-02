@@ -1,27 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>SpringCar | Rent a Car</title>
-<link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
 
-
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
-	
-<link href="/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">	
-
+<head th:include="fragments/header :: headerFragment">
+	<title id="pageTitle">SpringCar | Rent a Car</title>
 </head>
-
 
 <body>
 	<div class="container bg-light">
@@ -29,7 +11,7 @@
 		<!-- NAVBAR -->
 		<div th:replace="fragments/navbar.html :: navbar"></div>
 
-		<!-- FORM DE B√öSQUEDA -->
+		<!-- FORM DE B⁄SQUEDA -->
 		<form th:action="@{/}"
 			th:object="${session.reservation}"
 			method="post">
@@ -40,13 +22,13 @@
 						<option value="">Select pickup office</option>
 						<option value="SPR-CV">SpringCar Ciutat Vella</option>
 						<option value="SPR-NB">SpringCar Nou Barris</option>
-						<option value="SPR-HG">SpringCar Horta-Guinard√≥</option>
-						<option value="SPR-SG">SpringCar Sarri√†-Sant Gervasi</option>
+						<option value="SPR-HG">SpringCar Horta-GuinardÛ</option>
+						<option value="SPR-SG">SpringCar Sarri‡-Sant Gervasi</option>
 						<option value="SPR-LC">SpringCar Les Corts</option>
 						<option value="SPR-GR">SpringCar Gracia</option>
 						<option value="SPR-SA">SpringCar Sants</option>
 						<option value="SPR-EI">SpringCar Eixample</option>
-						<option value="SPR-SM">SpringCar Sant-Mart√≠</option>
+						<option value="SPR-SM">SpringCar Sant-MartÌ</option>
 						<option value="SPR-SA">SpringCar Sant Andreu</option>
 
 					</select>
@@ -58,13 +40,13 @@
 						<option value="">Select delivery office</option>
 						<option value="SPR-CV">SpringCar Ciutat Vella</option>
 						<option value="SPR-NB">SpringCar Nou Barris</option>
-						<option value="SPR-HG">SpringCar Horta-Guinard√≥</option>
-						<option value="SPR-SG">SpringCar Sarri√†-Sant Gervasi</option>
+						<option value="SPR-HG">SpringCar Horta-GuinardÛ</option>
+						<option value="SPR-SG">SpringCar Sarri‡-Sant Gervasi</option>
 						<option value="SPR-LC">SpringCar Les Corts</option>
 						<option value="SPR-GR">SpringCar Gracia</option>
 						<option value="SPR-SA">SpringCar Sants</option>
 						<option value="SPR-EI">SpringCar Eixample</option>
-						<option value="SPR-SM">SpringCar Sant-Mart√≠</option>
+						<option value="SPR-SM">SpringCar Sant-MartÌ</option>
 						<option value="SPR-SA">SpringCar Sant Andreu</option>
 
 					</select>

@@ -1,20 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title>SpringCar | Rental dates </title>
-	<link rel="shortcut icon" type="image/png" href="static/images/favicon.png"/>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
-
-    <link href="static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">	
-    
+<head th:include="fragments/header :: headerFragment">
+	<title id="pageTitle">SpringCar | Rental Dates</title>
 </head>
 
 
@@ -24,7 +11,7 @@
 		<!-- NAVBAR -->
 		<div th:replace="fragments/navbar.html :: navbar"></div>
 
-		<!-- FORM DE BÃšSQUEDA -->
+		<!-- FORM DE BÚSQUEDA -->
 
 		<div id="dataSelectionForm">
 			<form th:action="@{/reservation/dateselection}" th:object="${session.reservation}" method="post">
@@ -98,7 +85,7 @@
 						<td class="col-12 col-md-2">
 							<div class="h-100 d-flex align-items-end flex-column p-3">
 								<div class="h-100 d-flex align-items-center">
-									<Strong th:inline="text"> [[${session.car.category.priceBase}]]â‚¬ <small class="float-right pr-2">&nbsp per day</small></strong>
+									<Strong th:inline="text"> [[${session.car.category.priceBase}]]€ <small class="float-right pr-2">&nbsp per day</small></strong>
 								</div>
 								<!-- 								<a th:href="@{selectCar(id=${car.idCar})}" class="btn btn-sm font-weight-bold mt-auto">Choose</a> -->
 							</div>
