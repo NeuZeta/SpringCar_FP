@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"	
+  	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">SpringCar</title>
+		<meta name="description" content=""/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="content">
+				Antes del contenido de la página
+				<div layout:fragment="page_content"></div>
+				Después del contenido de la página.
+			</div>
+		</div>
+	</body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    </script>
+
+    <th:block layout:fragment="scripts">
+	</th:block>
+</html>
