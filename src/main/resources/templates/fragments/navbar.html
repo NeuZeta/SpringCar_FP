@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<nav th:fragment="navbar" class="row navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/index.html">
+<!--             <img th:src="@{/static/images/logo_baja.jpg}" width="100" height="100" alt="SpringCar company logo"> -->
+            <img src="/images/logo_alpha.png" width="105" height="50" alt="SpringCar company logo">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarSupportedContent text-success">
+            <ul class="navbar-nav navbar-left d-flex flex-row">
+                <li class="nav-item active  mr-3">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="/fleet">Our fleet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Our offices</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-right d-flex flex-row-reverse">
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="#">Companies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:if="${session.client == null}" href="/user/login">Login</a>
+                    <a class="nav-link" th:if="${session.client != null}" href="#" th:text="${session.client.userName}"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</html>

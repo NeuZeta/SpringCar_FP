@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>SpringCar | Extras configuration</title>
+<link rel="shortcut icon" type="image/png" href="static/images/favicon.png" />
+
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<link href="static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
+
+</head>
+
+
+<body>
+	<div class="container bg-light">
+
+		<!-- NAVBAR -->
+		<div th:replace="fragments/navbar.html :: navbar"></div>
+
+		<!-- ESTADO DEL PROCESO DE RESERVA -->
+
+		<nav aria-label="breadcrumb" class="row">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Vehicle selection</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Extras</li>
+				<li class="breadcrumb-item"><a href="#">Driver details</a></li>
+				<li class="breadcrumb-item"><a href="#">Booking confirmation</a></li>
+
+			</ol>
+		</nav>
+
+
+		<!-- MENÚ PAG. INDEX DATOS SELECCIONADOS DE HOME -->
+
+		<nav class="row" id="homeDataSelectedNames">
+			<div class="col-2 pt-4 pb-1 border border-xl border-light text-center">
+				<a href="#" class="text-reset text-decoration-none"><i class="fas fa-map-marker-alt"></i> Pickup Office</a>
+			</div>
+			<div class="col-2 pt-4 pb-1 border border-xl border-light text-center">
+				<a href="#" class="text-reset text-decoration-none"><i class="fas fa-map-marker-alt"></i> Delivery Office</a>
+			</div>
+			<div class="col-3 pt-4 pb-1 border border-xl border-light text-center">
+				<a href="#" class="text-reset text-decoration-none"><i class="far fa-calendar-alt"></i> Pickup Date</a>
+			</div>
+			<div class="col-3 pt-4 pb-1 border border-xl border-light text-center">
+				<a href="#" class="text-reset text-decoration-none"><i class="far fa-calendar-alt"></i> Delivery Date</a>
+			</div>
+		</nav>
+
+
+		<nav class="row mb-5" id="homeDataSelectedValues">
+			<div class="col-2  border-none text-center" th:text="${session.officeName}"></div>
+			<div class="col-2  border-none text-center" th:text="${session.officeReturnName}"></div>
+			<div class="col-3  border-none text-center">
+				<span th:text="${#dates.format(session.reservation.initDate, 'dd-MM-yyyy')}"></span>
+			</div>
+			<div class="col-3  border-none text-center">
+				<span th:text="${#dates.format(session.reservation.finalDate, 'dd-MM-yyyy')}"></span>
+			</div>
+		</nav>
+
+
+
+		<!-- CAR LIST. SAME TABLE AS VEHICLE SELECTION PAGE -->
+
+		<div class="col-12">
+
+			<table class="table table-striped table-hover mt-5 mb-2">
+				<tbody>
+					<tr class="row mb-3">
+						<td class="col-12 col-md-6">
+							<div class="h-100 d-flex align-items-center flex-column p-3">
+								<img style="max-width: 320px;" class="w-100 my-auto" th:src="@{${session.car.photo}}" />
+							</div>
+						</td>
+						<td class="col-12 col-md-4">
+							<div class="p-3">
+								<h2 th:text="${session.car.marca}"></h2>
+								<strong class="pb-3 d-block" th:text="${session.car.model}"></strong>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item bg-transparent text-dark">Transmission: <span th:text="${session.car.transmission}"></span></li>
+									<li class="list-group-item bg-transparent text-dark">AC: <span th:if="${session.car.ac} == true" th:text="Yes"></span> <span th:if="${session.car.ac} != true" th:text="No"></span>
+									</li>
+									<li class="list-group-item bg-transparent text-dark">Seats: <span th:text="${session.car.seats}"></span></li>
+									<li class="list-group-item bg-transparent text-dark">Doors: <span th:text="${session.car.doors}"></span></li>
+									<li class="list-group-item bg-transparent text-dark">Suitcases: <span th:text="${session.car.suitCases}"></span></li>
+								</ul>
+							</div>
+
+						</td>
+						<td class="col-12 col-md-2">
+							<div class="h-100 d-flex align-items-end flex-column p-3">
+								<div class="h-100 d-flex align-items-center">
+									<Strong th:inline="text"> [[${session.car.category.priceBase}]]€ <small class="float-right pr-2">&nbsp per day</small></strong>
+								</div>
+								<!-- 								<a th:href="@{selectCar(id=${car.idCar})}" class="btn btn-sm font-weight-bold mt-auto">Choose</a> -->
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- TABLA LISTADO EXTRAS PENDIENTE -->
+
+
+		<!-- extras CATEGORIA-->
+		<form class="row" th:action="@{/reservation/extrasconfig}" method="post">
+
+			<h2 class="col-12">Extras</h2>
+
+			<div class="col-12 col-lg-6">
+				<strong class="py-3 d-block">Insurance</strong>
+				<ul class="list-group list-group-flush text-dark">
+					<li class="list-group-item bg-transparent">
+						<div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input" id="baseInsurance" name="insurance" value="basicInsurance" checked>
+							<label class="custom-control-label w-100 px-3" for="baseInsurance">
+								<span class="pl-2 ml-1">Basic third party insurance</span>
+								<span class="float-right" th:text="${session.car.category.priceBaseInsurance} + €"></span>
+							</label>
+						</div>
+					</li>
+					<li class="list-group-item bg-transparent">
+						<div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input" id="topInsurance" name="insurance" value="topInsurance">
+							<label class="custom-control-label w-100 px-3" for="topInsurance">
+							<span class="pl-2 ml-1">All risks covering insurance</span>
+							<span class="float-right" th:text="${session.car.category.priceTopInsurance} + €"></span>
+						</label>
+						</div>
+					</li>
+					<li class="list-group-item bg-transparent ">
+						<div class="custom-control custom-switch">
+							<input type="checkbox" class="custom-control-input m-3" value="priceTireAndGlassProtection" id="priceTireAndGlassProtection" name="priceTireAndGlassProtection">
+							<label class="custom-control-label w-100 px-3" for="priceTireAndGlassProtection">Tire and glass protection<span class="float-right" th:text="${session.car.category.priceTireAndGlassProtection} + €"></span></label>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+	<!-- Extras comunes -->
+
+			<div class="col-12 col-lg-6">
+				<strong class="py-3 d-block">Other Extras</strong>
+				<ul class="list-group list-group-flush text-dark" th:each="extra:${extras}">
+
+					<li class="list-group-item bg-transparent">
+						<div class="custom-control custom-switch">
+							<input type="checkbox" class="custom-control-input m-3" th:value="${extra.idExtra}" name="idExtra" th:id="${extra.idExtra}">
+							<label class="custom-control-label w-100 px-3" th:for="${extra.idExtra}" th:inline="text"> [[${extra.descriptionExtra}]]<span class="float-right" th:text="${extra.price} + €"></span></label>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="col-12 text-center py-3">
+				<button type="submit" class="btn btn-lg">Submit</button>
+			</div>
+
+		</form>
+
+		<!-- FOOTER -->
+		<div th:replace="fragments/footer.html :: footer"></div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+
+</html>

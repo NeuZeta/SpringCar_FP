@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>SpringCar | Register</title>
+<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<link href="/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
+
+</head>
+
+
+<body>
+	<div class="container bg-light">
+
+		<!-- NAVBAR -->
+		<div th:replace="fragments/navbar.html :: navbar"></div>
+
+
+		<!-- NEW REGISTRATION FORM -->
+
+		<div class="row">
+			<div class="col-12 mt-5">
+				<div class="text-center font-weight-bold">Register into SpringCar to gain multiple advantages</div>
+			</div>
+		</div>
+
+
+		<form th:action="@{/user/registration}" th:object="${client}" method="post">
+			<div class="form-group form-row mt-5">
+				<div class="col-12 col-md-6">
+					<label for="name">First Name </label>
+					<input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter your name" required>
+				</div>
+
+				<div class="col-12 col-md-6">
+					<label for="surname">Last Name </label>
+					<input type="text" class="form-control" id="surname" name="surname" aria-describedby="surnameHelp" placeholder="Enter your last name" required>
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-12">
+					<label for="address">Address</label>
+					<input type="text" class="form-control" id="address" name="address" aria-describedby="addressHelp" placeholder="Enter your postal address" required>
+				</div>
+			</div>
+			<div class="form-group form-row">
+				<div class="col-12 col-md-6">
+					<label for="city">City </label>
+					<input type="text" class="form-control" id="city" name="city" aria-describedby="cityHelp" placeholder="Enter your city" required>
+				</div>
+
+				<div class="col-12 col-md-6">
+					<label for="postCode">Postal Code </label>
+					<input type="text" class="form-control" id="postCode" name="postCode" aria-describedby="postCodeHelp" placeholder="Enter your postal Code number" required>
+				</div>
+			</div>
+			<div class="form-group form-row">
+				<div class="col-12">
+					<label for="country">Country</label>
+					<input type="text" class="form-control" id="country" name="country" aria-describedby="countryHelp" placeholder="Enter your country" required>
+				</div>
+			</div>
+			<div class="form-group form-row">
+				<div class="col-12 col-md-6">
+					<label for="phoneNumber">Phone Number </label>
+					<input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" aria-describedby="phoneNumberHelp" placeholder="Enter your phone number" required>
+				</div>
+
+				<div class="col-12 col-md-6">
+					<label for="idNumber"> ID Number </label>
+					<input type="text" class="form-control" id="idNumber" name="idNumber" aria-describedby="idNumberHelp" placeholder="Enter your ID number" required>
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-12">
+					<label for="email">E-mail</label>
+					<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter your e-mail">
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-6">
+					<label for="userName">Username</label>
+					<input type="text" class="form-control" id="userName" name="userName" aria-describedby="userNameHelp" placeholder="Enter username" required>
+				</div>
+			</div>
+			<div class="form-group form-row">
+				<div class="col-12 col-md-6">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Enter password" aria-required="true" required>
+					<!--                 <p id="passwordHelp" class="form-control">Password should be XX characters</p> -->
+				</div>
+				<div class="col-12 col-md-6">
+					<label for="passwordConfirmed">Confirm password</label>
+					<input type="password" class="form-control" id="passwordConfirmed" aria-describedby="passwordConfirmedHelp" placeholder="Confirm password" aria-required="true" required>
+				</div>
+			</div>
+
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required>
+				<label class="form-check-label" for="defaultCheck1"> I will be 18 years or oder at the time of the rental. </label>
+			</div>
+
+			<div class="col-12 text-center mt-3 mb-5">
+				<button type="submit" class="btn btn-lg">Register</button>
+			</div>
+
+		</form>
+
+
+		<!-- FOOTER -->
+		<div th:replace="fragments/footer.html :: footer"></div>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</div>
+</body>
+
+
+</html>

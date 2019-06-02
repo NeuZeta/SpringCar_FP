@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>SpringCar | Login</title>
+<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<link href="/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
+
+</head>
+
+
+<body>
+	<div class="container bg-light">
+
+		<!-- NAVBAR -->
+		<div th:replace="fragments/navbar.html :: navbar"></div>
+
+
+		<!-- LOGIN MENU -->
+
+		<form th:action="@{/user/login}" th:object="${login}" method="post">
+			<div class="form-group form-row mt-5">
+				<div class="col-12">
+					<label for="userName">Username</label>
+					<input type="text" class="form-control" id="userName" aria-describedby="userNameHelp" name="userName" placeholder="Enter username" required>
+				</div>
+			</div>
+
+			<div class="form-group form-row">
+				<div class="col-12">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Enter password" aria-required="true" required>
+					<!--                 <p id="passwordHelp" class="form-control">Password should be XX characters</p> -->
+					<span th:if="${session.error_userAuthentification != null}" th:text="${session.error_userAuthentification}" id="passwordHelp" class="form-control"></span>
+				</div>
+			</div>
+			<div class="col-12 text-center">
+				<button type="submit" class="btn btn-lg">Login</button>
+			</div>
+
+		</form>
+
+		<div class="row">
+			<div class="col-12 mt-4">
+				<div class="text-center font-weight-normal">As a registered SpringCar customer, you can benefit from multiple advantages. If you still have not registered, do it here!</div>
+			</div>
+		</div>
+
+		<div class="col-12 mt-3 mb-5 text-center">
+			<button type="button" class="btn btn-lg active">
+				<a href="/user/registration" class="text text-reset text-decoration-none"> Registration </a>
+			</button>
+		</div>
+
+
+		<!-- FOOTER -->
+		<div th:replace="fragments/footer.html :: footer"></div>
+
+		<!-- FOOTER IMPORTS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</div>
+</body>
+
+</html>

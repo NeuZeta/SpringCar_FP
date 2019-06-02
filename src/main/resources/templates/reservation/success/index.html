@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	
+	<title>SpringCar | Rental details </title>
+	<link rel="shortcut icon" type="image/png" href="static/images/favicon.png"/>
+	
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+		crossorigin="anonymous">
+
+    <link href="static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">	
+
+</head>
+
+<body>
+	<div class="container bg-light">
+
+		<!-- NAVBAR -->
+		<div th:replace="fragments/navbar.html :: navbar"></div>
+	
+		
+		<!-- CONFIRMATION MESSAGE. CHEQUEAR NOMBRES VARIABLES DE LA RESERVA FINAL -->
+	
+		<div class="mt-5 mb-5 text-center">
+			  <img src="/images/logo_alpha.png" class="img-fluid max-width: 100% height: auto" alt="Spring Car company logo">
+		</div>
+
+	<div class="row mt-5">
+		<div class="h3 col-12 text-center">
+            Congratulations <span th:text="${session.client.name}"></span>! We have correctly received your booking.<br>
+            These are your booking details:
+		 		  		  
+		</div>
+	</div>
+	
+	<div class="row offset-2 ml-3 mr-3 mb-5">
+		<div id="rentalDetails" class="col-6 offset-md-3 text-center">
+		 	We will be waiting for you at our SpringCar office: <span class="variableRentalDetails" th:text="${session.reservation.officeCode}"></span>
+		</div>
+		<div id="rentalDetails" class="col-6 offset-md-3 text-center">
+		 	Booking date: <span th:text="${#dates.format(session.reservation.initDate, 'dd-MM-yyyy')}"></span>
+		</div>
+		<div id="rentalDetails" class="col-6 offset-md-3 text-center">
+		 	Booking number: <span th:text="${session.reservation.idReservation}"></span>
+		</div>
+	</div>
+	
+			
+	    <!-- FOOTER -->
+		<div th:replace="fragments/footer.html :: footer"></div>
+	</div>	
+	
+	    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+	            crossorigin="anonymous"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	            crossorigin="anonymous"></script>
+
+</body>
+</html>
