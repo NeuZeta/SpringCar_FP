@@ -13,13 +13,13 @@ body {
 
 .btn {
 	color: white;
-    background-color: #a0b900;
+    background-color: #c8d864;
     border-radius: 0;
 }
 
 .btn:hover {
 	color:white;
-    background-color: #809400;
+    background-color: #afbd57;
 }
 
 /*<!--Bootstrap Custom checkbox-->*/

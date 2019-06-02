@@ -8,57 +8,55 @@
 <div layout:fragment="page_content" id="page_content">
 
 	<!-- FORM DE BÚSQUEDA -->
-	<form class="mt-5 mb-5 row" th:action="@{/reservation/dateselection}" th:object="${session.reservation}" method="post">
-		<div class="col-12 col-md-2 offset">
+	<form class="mt-5 mb-5 row" th:action="@{/}" th:object="${session.reservation}" method="post">
+		<div class="col-12 col-md-6 col-lg-2 offset">
 			<div class="form-group">
-				<label for="officeCode">Pickup office:</label> <select id="officeCode" name="officeCode" class="form-control">
-					<option value="">Choose an office</option>
+				<label for="officeCode">Pickup office:</label> 
+				<select id="officeCode" name="officeCode" class="form-control" required>
+					<option value="">Select...</option>
 					<option th:each="office:${offices}" th:value="${office.officeCode}" th:text="${office.officeName}" th:selected="${office.officeCode == session.reservation.officeCode}"></option>
 				</select>
 			</div>
 		</div>
 
-		<div class="col-12 col-md-2">
+		<div class="col-12 col-md-6 col-lg-2">
 			<div class="form-group">
-				<label for="officeSelection">Delivery office:</label> <select id="officeSelection" name="officeReturnCode" class="form-control">
-					<option value="">Choose an office</option>
+				<label for="officeSelection">Delivery office:</label> 
+				<select id="officeSelection" name="officeReturnCode" class="form-control"required>
+					<option value="">Select...</option>
 					<option th:each="office:${offices}" th:value="${office.officeCode}" th:text="${office.officeName}" th:selected="${office.officeCode == session.reservation.officeCode}"></option>
 				</select>
 			</div>
 		</div>
-		<div class="col-12 col-md-3">
+		<div class="col-12 col-md-6 col-lg-3">
 			<div class="form-group">
 				<label for="initDate">Pickup date:</label>
 				<input class="form-control" type="date" name="initDate" id="initDate" step="1" min="2019-06-01" max="2020-06-01" value="2019-06-01" required>
 			</div>
 		</div>
-		<div class="col-12 col-md-3">
+		<div class="col-12 col-md-6 col-lg-3">
 
 			<div class="form-group">
 				<label for="finalDate">Delivery date:</label>
 				<input class="form-control" type="date" name="finalDate" id="finalDate" step="1" min="2019-06-01" max="2020-06-01" value="2019-06-01" required>
-
-				<!-- 						<small class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+				<div th:if="${session.errorDates != null}">
+					<small class="form-text text-muted" th:text="${session.errorDates}"></small>
+				</div>
 			</div>
 		</div>
-		<div class="col-12 col-md-2">
+		<div class="col-12 col-md-3 offset-md-9 col-lg-2 offset-lg-0">
 
 			<div class="form-group">
-				<label>&nbsp</label>
+				<label class="d-none d-lg-block">&nbsp</label>
 				<button type="submit" class="btn font-weight-bold float-right w-100">Submit</button>
 			</div>
 		</div>
-		<div class="col-6 ml-auto p-2" th:if="${session.errorDates != null}">
-			<span class="form-control" id="passwordHelp" th:text="${session.errorDates}"></span>
-		</div>
-
-
 	</form>
 
 	<!-- CAROUSEL-->
 
 
-	<div id="carouselHomePage" class="carousel slide carousel-fade" data-ride="carousel">
+	<div id="carouselHomePage" class="carousel slide carousel-fade pb-5" data-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<img src="images/carCategoryA.jpg" class="d-block w-100" alt="random category A car">

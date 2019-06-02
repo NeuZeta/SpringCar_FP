@@ -33,7 +33,7 @@ public class HomeController {
 			session.setAttribute("differenceInDays", Utils.calculateDifferenceInDays (rent));
 		} else {
 			session.setAttribute("errorDates", "Pick up date must be before return date!");
-			return "/"; 
+			return "redirect:/"; 
 		}
 		return "redirect:/reservation/vehicleselect/";
 	}

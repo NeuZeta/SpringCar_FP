@@ -35,7 +35,7 @@ public class DateSelectionController {
 			session.setAttribute("differenceInDays", Utils.calculateDifferenceInDays (rent));
 		} else {
 			session.setAttribute("errorDates", "Pick up date must be before return date!");
-			return "/reservation/dateselection/index"; 
+			return "redirect:/reservation/dateselection/"; 
 		}
 		return "redirect:/reservation/extrasconfig/";
 	}
