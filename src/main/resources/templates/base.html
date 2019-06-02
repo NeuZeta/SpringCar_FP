@@ -9,20 +9,23 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<!-- <link href="/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">	 -->
+<link href="/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
 
 </head>
-<body>
-	<div class="container">
-		<div class="content">
-			<!-- NAVBAR -->
-			<div th:replace="fragments/navbar.html :: navbar"></div>
-			<!-- PAGE CONTENT -->
-			<div layout:fragment="page_content"></div>
-			<!-- FOOTER -->
-		<div th:replace="fragments/footer.html :: footer"></div>
-		</div>
+<body class="d-flex flex-column">
+
+	<!-- NAVBAR -->
+	<div th:replace="fragments/navbar.html :: navbar"></div>
+
+	<!-- PAGE MAIN CONTENT -->
+	<div id="page-content" class="pt-5 mt-2">
+		<main role="main" class="container"> <!-- PAGE CONTENT -->
+		<div layout:fragment="page_content"></div>
+		</main>	
 	</div>
+	<!-- FOOTER -->
+	<div th:replace="fragments/footer.html :: footer"></div>
+
 </body>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
