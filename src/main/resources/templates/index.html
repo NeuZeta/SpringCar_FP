@@ -9,7 +9,7 @@
 
 	<!-- FORM DE BÚSQUEDA -->
 	<form class="mt-5 mb-5 row" th:action="@{/}" th:object="${session.reservation}" method="post">
-		<div class="col-12 col-md-6 col-lg-2 offset">
+		<div class="col-12 col-lg pb-3 pb-lg-0 overflow-hidden">
 			<div class="form-group">
 				<label for="officeCode">Pickup office:</label> 
 				<select id="officeCode" name="officeCode" class="form-control" required>
@@ -19,7 +19,7 @@
 			</div>
 		</div>
 
-		<div class="col-12 col-md-6 col-lg-2">
+		<div class="col-12 col-lg pb-3 pb-lg-0 overflow-hidden">
 			<div class="form-group">
 				<label for="officeSelection">Delivery office:</label> 
 				<select id="officeSelection" name="officeReturnCode" class="form-control"required>
@@ -28,13 +28,13 @@
 				</select>
 			</div>
 		</div>
-		<div class="col-12 col-md-6 col-lg-3">
+		<div class="col-12 col-lg pb-3 pb-lg-0 overflow-hidden">
 			<div class="form-group">
 				<label for="initDate">Pickup date:</label>
 				<input class="form-control" type="date" name="initDate" id="initDate" step="1" min="2019-06-01" max="2020-06-01" value="2019-06-01" required>
 			</div>
 		</div>
-		<div class="col-12 col-md-6 col-lg-3">
+		<div class="col-12 col-lg pb-3 pb-lg-0 overflow-hidden">
 
 			<div class="form-group">
 				<label for="finalDate">Delivery date:</label>
@@ -44,7 +44,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-md-3 offset-md-9 col-lg-2 offset-lg-0">
+		<div class="col-12 col-lg pb-3 pb-lg-0 overflow-hidden">
 
 			<div class="form-group">
 				<label class="d-none d-lg-block">&nbsp</label>
