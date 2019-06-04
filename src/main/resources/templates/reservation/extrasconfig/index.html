@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/header :: headerFragment">
-	<title id="pageTitle">SpringCar | Extras Configuration</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base}">
+
+<head>
+<title>Home page</title>
 </head>
 
-
-<body>
-	<div class="container bg-light">
-
-		<!-- NAVBAR -->
-		<div th:replace="fragments/navbar.html :: navbar"></div>
+<div layout:fragment="page_content" id="page_content" class="container h-100 bg-white overflow-hidden">
 
 		<!-- ESTADO DEL PROCESO DE RESERVA -->
 
@@ -24,7 +20,7 @@
 		</nav>
 
 
-		<!-- MENÚ PAG. INDEX DATOS SELECCIONADOS DE HOME -->
+		<!-- MENÃš PAG. INDEX DATOS SELECCIONADOS DE HOME -->
 
 		<nav class="row" id="homeDataSelectedNames">
 			<div class="col-2 pt-4 pb-1 border border-xl border-light text-center">
@@ -85,7 +81,7 @@
 						<td class="col-12 col-md-2">
 							<div class="h-100 d-flex align-items-end flex-column p-3">
 								<div class="h-100 d-flex align-items-center">
-									<Strong th:inline="text"> [[${session.car.category.priceBase}]]€ <small class="float-right pr-2">&nbsp per day</small></strong>
+									<Strong th:inline="text"> [[${session.car.category.priceBase}]]â‚¬ <small class="float-right pr-2">&nbsp per day</small></strong>
 								</div>
 								<!-- 								<a th:href="@{selectCar(id=${car.idCar})}" class="btn btn-sm font-weight-bold mt-auto">Choose</a> -->
 							</div>
@@ -111,7 +107,7 @@
 							<input type="radio" class="custom-control-input" id="baseInsurance" name="insurance" value="basicInsurance" checked>
 							<label class="custom-control-label w-100 px-3" for="baseInsurance">
 								<span class="pl-2 ml-1">Basic third party insurance</span>
-								<span class="float-right" th:text="${session.car.category.priceBaseInsurance} + €"></span>
+								<span class="float-right" th:text="${session.car.category.priceBaseInsurance} + â‚¬"></span>
 							</label>
 						</div>
 					</li>
@@ -120,14 +116,14 @@
 							<input type="radio" class="custom-control-input" id="topInsurance" name="insurance" value="topInsurance">
 							<label class="custom-control-label w-100 px-3" for="topInsurance">
 							<span class="pl-2 ml-1">All risks covering insurance</span>
-							<span class="float-right" th:text="${session.car.category.priceTopInsurance} + €"></span>
+							<span class="float-right" th:text="${session.car.category.priceTopInsurance} + â‚¬"></span>
 						</label>
 						</div>
 					</li>
 					<li class="list-group-item bg-transparent ">
 						<div class="custom-control custom-switch">
 							<input type="checkbox" class="custom-control-input m-3" value="priceTireAndGlassProtection" id="priceTireAndGlassProtection" name="priceTireAndGlassProtection">
-							<label class="custom-control-label w-100 px-3" for="priceTireAndGlassProtection">Tire and glass protection<span class="float-right" th:text="${session.car.category.priceTireAndGlassProtection} + €"></span></label>
+							<label class="custom-control-label w-100 px-3" for="priceTireAndGlassProtection">Tire and glass protection<span class="float-right" th:text="${session.car.category.priceTireAndGlassProtection} + â‚¬"></span></label>
 						</div>
 					</li>
 				</ul>
@@ -142,7 +138,7 @@
 					<li class="list-group-item bg-transparent">
 						<div class="custom-control custom-switch">
 							<input type="checkbox" class="custom-control-input m-3" th:value="${extra.idExtra}" name="idExtra" th:id="${extra.idExtra}">
-							<label class="custom-control-label w-100 px-3" th:for="${extra.idExtra}" th:inline="text"> [[${extra.descriptionExtra}]]<span class="float-right" th:text="${extra.price} + €"></span></label>
+							<label class="custom-control-label w-100 px-3" th:for="${extra.idExtra}" th:inline="text"> [[${extra.descriptionExtra}]]<span class="float-right" th:text="${extra.price} + â‚¬"></span></label>
 						</div>
 					</li>
 				</ul>
@@ -153,14 +149,8 @@
 
 		</form>
 
-		<!-- FOOTER -->
-		<div th:replace="fragments/footer.html :: footer"></div>
-	</div>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-
-
-</html>
+<th:block layout:fragment="scripts">
+	<script type="text/javascript">
+		console.log('Hello World');
+	</script>
+</th:block>

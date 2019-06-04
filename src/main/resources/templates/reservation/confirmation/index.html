@@ -1,297 +1,238 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/header :: headerFragment">
-	<title id="pageTitle">SpringCar | Confirmation</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base}">
+
+<head>
+<title>Confirmation</title>
 </head>
-<body>
-	<div class="container bg-light">
 
-		<!-- NAVBAR -->
-		<div th:replace="fragments/navbar.html :: navbar"></div>
+<div layout:fragment="page_content" id="page_content" class="container h-100 bg-white overflow-hidden">
 
-		<!-- ESTADO DEL PROCESO DE RESERVA -->
+	<!-- ESTADO DEL PROCESO DE RESERVA -->
 
-		<nav aria-label="breadcrumb" class="row">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Vehicle selection</a></li>
-				<li class="breadcrumb-item"><a href="#">Extras</a></li>
-				<li class="breadcrumb-item"><a href="#">Driver details</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Booking confirmation</li>
-			</ol>
-		</nav>
+	<nav aria-label="breadcrumb" class="row">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Vehicle selection</a></li>
+			<li class="breadcrumb-item"><a href="#">Extras</a></li>
+			<li class="breadcrumb-item"><a href="#">Driver details</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Booking confirmation</li>
+		</ol>
+	</nav>
 
-		<!-- CUSTOMER DETAILS -->
+	<!-- CUSTOMER DETAILS -->
 
-		<div th:if="${session.client != null}" class=" text-dark">
-			<form th:object="${session.client}" method="get">
-				<div class="form-group form-row mt-5">
-					<div class="col-12 col-md-6">
-						<label for="name">First Name </label> <input type="text" readonly
-							class="form-control" id="name" name="name"
-							aria-describedby="nameHelp"
-							th:placeholder="${session.client.name}">
-					</div>
-
-					<div class="col-12 col-md-6">
-						<label for="surname">Last Name </label> <input type="text"
-							readonly class="form-control" id="surname" name="surname"
-							aria-describedby="surnameHelp"
-							th:placeholder="${session.client.surname}">
-					</div>
+	<div th:if="${session.client != null}" class=" text-dark">
+		<form th:object="${session.client}" method="get">
+			<div class="form-group form-row mt-5">
+				<div class="col-12 col-md-6">
+					<label for="name">First Name </label>
+					<input type="text" readonly class="form-control" id="name" name="name" aria-describedby="nameHelp" th:placeholder="${session.client.name}">
 				</div>
 
-				<div class="form-group form-row">
-					<div class="col-12 col-md-6">
-						<label for="idNumber"> ID Number </label> <input type="text"
-							readonly class="form-control" id="idNumber" name="idNumber"
-							aria-describedby="idNumberHelp"
-							th:placeholder="${session.client.idNumber}">
-					</div>
-					<div class="col-12 col-md-6">
-						<label for="phoneNumber">Phone Number </label> <input type="tel"
-							readonly class="form-control" id="phoneNumber" name="phoneNumber"
-							aria-describedby="phoneNumberHelp"
-							th:placeholder="${session.client.phoneNumber}">
-					</div>
-				</div>
-
-				<div class="form-group form-row">
-					<div class="col-12">
-						<label for="email">E-mail</label> <input type="email" readonly
-							class="form-control" id="email" name="email"
-							aria-describedby="emailHelp"
-							th:placeholder="${session.client.email}">
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<!-- MENÚ PAG. INDEX DATOS SELECCIONADOS DE HOME -->
-
-		<div id="carReservationStatement" class="row mt-5 ml-3 mr-3">
-			<div class="col-12 ">
-				<div class="p-2 text-light text-justify">These are your car
-					reservation details</div>
-			</div>
-		</div>
-
-
-		<nav class="row" id="homeDataSelectedNames">
-			<div
-				class="col-2 pt-4 pb-1 border border-xl border-light text-center">
-				<a href="index.html" class="text-reset text-decoration-none"><i
-					class="fas fa-map-marker-alt"></i> Pickup Office</a>
-			</div>
-			<div
-				class="col-2 pt-4 pb-1 border border-xl border-light text-center">
-				<a href="fotos.html" class="text-reset text-decoration-none"><i
-					class="fas fa-map-marker-alt"></i> Delivery Office</a>
-			</div>
-			<div
-				class="col-3 pt-4 pb-1 border border-xl border-light text-center">
-				<a href="blog.html" class="text-reset text-decoration-none"><i
-					class="far fa-calendar-alt"></i> Pickup Date</a>
-			</div>
-			<div
-				class="col-3 pt-4 pb-1 border border-xl border-light text-center">
-				<a href="contacto.html" class="text-reset text-decoration-none"><i
-					class="far fa-calendar-alt"></i> Delivery Date</a>
-			</div>
-		</nav>
-
-
-		<nav class="row mb-5" id="homeDataSelectedValues">
-			<div class="col-2  border-none text-center"
-				th:text="${session.officeName}"></div>
-			<div class="col-2  border-none text-center"
-				th:text="${session.officeReturnName}"></div>
-			<div class="col-3  border-none text-center">
-				<span
-					th:text="${#dates.format(session.reservation.initDate, 'dd-MM-yyyy')}"></span>
-			</div>
-			<div class="col-3  border-none text-center">
-				<span
-					th:text="${#dates.format(session.reservation.finalDate, 'dd-MM-yyyy')}"></span>
-			</div>
-		</nav>
-
-
-		<!-- CAR SELECTION -->
-
-		<div id="carSelectionStatement" class="row mt-5 ml-3 mr-3">
-			<div class="col-12 ">
-				<div class="p-2 text-dark text-justify">Car selection</div>
-			</div>
-		</div>
-
-		<!-- CAR LIST. SAME TABLE AS VEHICLE SELECTION PAGE -->
-
-		<div class="col-12">
-
-			<table class="table table-striped table-hover mt-5 mb-5">
-
-				<tbody>
-					<tr class="row mb-3">
-						<td class="col-12 col-md-6">
-							<div class="h-100 d-flex align-items-center flex-column p-3">
-								<img style="max-width: 320px;" class="w-100 my-auto"
-									th:src="@{${session.car.photo}}" />
-							</div>
-						</td>
-						<td class="col-12 col-md-4">
-							<div class="p-3">
-								<h2 th:text="${session.car.marca}"></h2>
-								<strong class="pb-3 d-block" th:text="${session.car.model}"></strong>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item bg-transparent text-dark">Transmission:
-										<span th:text="${session.car.transmission}"></span>
-									</li>
-									<li class="list-group-item bg-transparent text-dark">AC: <span
-										th:if="${session.car.ac} == true" th:text="Yes"></span> <span
-										th:if="${session.car.ac} != true" th:text="No"></span>
-									</li>
-									<li class="list-group-item bg-transparent text-dark">Seats:
-										<span th:text="${session.car.seats}"></span>
-									</li>
-									<li class="list-group-item bg-transparent text-dark">Doors:
-										<span th:text="${session.car.doors}"></span>
-									</li>
-									<li class="list-group-item bg-transparent text-dark">Suitcases:
-										<span th:text="${session.car.suitCases}"></span>
-									</li>
-								</ul>
-							</div>
-						</td>
-						<td class="col-12 col-md-2">
-							<div class="h-100 d-flex align-items-end flex-column p-3">
-								<div class="h-100 d-flex align-items-center">
-									<Strong th:inline="text">
-										[[${session.car.category.priceBase}]]€ <small
-										class="float-right pr-2">&nbsp per day</small>
-									</strong>
-								</div>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-
-		<!-- EXTRAS SELECTION -->
-
-
-		<div id="extrasConfigurationStatement" class="row mt-5 ml-3 mr-3">
-			<div class="col-12 ">
-				<div class="p-2 text-dark text-justify">Extras configuration</div>
-			</div>
-		</div>
-
-		<!-- TABLA LISTADO EXTRAS -->
-
-
-		<div class="row p-3">
-			<div class="col-12 col-lg-6">
-				<strong class="py-3 d-block">Insurance</strong>
-				<ul class="list-group list-group-flush text-dark">
-					<li class="list-group-item bg-transparent"
-						th:if="${session.reservation.topInsurance == false}">
-						<div>
-							<span>Basic third party insurance</span> <span
-								class="float-right"
-								th:text="${session.car.category.priceBaseInsurance} + €"></span>
-						</div>
-					</li>
-					<li class="list-group-item bg-transparent"
-						th:if="${session.reservation.topInsurance != false}">
-						<div>
-							<span>All risks covering insurance</span> <span
-								class="float-right"
-								th:text="${session.car.category.priceTopInsurance} + €"></span>
-						</div>
-					</li>
-					<li class="list-group-item bg-transparent"
-						th:if="${session.reservation.tireAndGlassProtection != false}">
-						<div>
-							<span>Tire and glass protection</span> <span class="float-right"
-								th:text="${session.car.category.priceTireAndGlassProtection} + €"></span>
-						</div>
-					</li>
-				</ul>
-			</div>
-
-			<!-- Extras comunes -->
-
-			<div class="col-12 col-lg-6">
-				<strong class="py-3 d-block">Other Extras</strong> <span
-					class="p-3 text-dark"
-					th:if="${#lists.isEmpty(session.reservation.extras)}">No
-					extras selected!</span>
-
-				<ul class="list-group list-group-flush text-dark"
-					th:each="extra:${session.reservation.extras}">
-
-					<li class="list-group-item bg-transparent">
-						<div>
-							<span class="w-100" th:inline="text">
-								[[${extra.descriptionExtra}]]<span class="float-right"
-								th:text="${extra.price} + €"></span>
-							</span>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		<!-- AMOUNT PAYMENT SECTION -->
-
-		<div id="costStatement" class="row mt-5 mx-3">
-			<div class="col-12 ">
-				<div class="p-2 text-dark text-justify">Car reservation cost</div>
-			</div>
-		</div>
-		<div id="costAmount" class="row mt-1 mb-5 mx-3">
-			<div class="col-12 ">
-				<div class="p-2 text-dark text-justify">
-					Car base price: <span th:inline="text">
-						[[${session.car.category.priceBase}]]€ x <span th:inline="text">[[${session.differenceInDays}]]
-							days = <span
-							th:text="${#numbers.formatDecimal(sumCarBase, 0, 'POINT', 2, 'COMMA')}"></span>
-					</span>
-					</span><span>€</span>
+				<div class="col-12 col-md-6">
+					<label for="surname">Last Name </label>
+					<input type="text" readonly class="form-control" id="surname" name="surname" aria-describedby="surnameHelp" th:placeholder="${session.client.surname}">
 				</div>
 			</div>
-			<div class="col-12 ">
-				<div class="p-2 text-dark text-justify">
-					Insurance and Extras price: <span
-						th:text="${#numbers.formatDecimal(sumExtras, 0, 'POINT', 2, 'COMMA')}"></span><span>€</span>
+
+			<div class="form-group form-row">
+				<div class="col-12 col-md-6">
+					<label for="idNumber"> ID Number </label>
+					<input type="text" readonly class="form-control" id="idNumber" name="idNumber" aria-describedby="idNumberHelp" th:placeholder="${session.client.idNumber}">
+				</div>
+				<div class="col-12 col-md-6">
+					<label for="phoneNumber">Phone Number </label>
+					<input type="tel" readonly class="form-control" id="phoneNumber" name="phoneNumber" aria-describedby="phoneNumberHelp" th:placeholder="${session.client.phoneNumber}">
 				</div>
 			</div>
-			<div class="col-12 ">
-				<div class="p-2 text-dark text-justify">
-					Total amount: <span
-						th:text="${#numbers.formatDecimal(sumRentPrice, 0, 'POINT', 2, 'COMMA')}"></span><span>€</span>
-				</div>
-			</div>
-		</div>
-		<form th:action="@{/reservation/confirmation}" method="post">
-			<div th:if="${session.client != null}" id="confirm" class="row mt-1 mb-5 ml-3 mr-3">
-				<div class="col-12 ">
-					<button type="submit" class="btn font-weight-bold">Confirm</button>
+
+			<div class="form-group form-row">
+				<div class="col-12">
+					<label for="email">E-mail</label>
+					<input type="email" readonly class="form-control" id="email" name="email" aria-describedby="emailHelp" th:placeholder="${session.client.email}">
 				</div>
 			</div>
 		</form>
-		
-		<!-- FOOTER -->
-		<div th:replace="fragments/footer.html :: footer"></div>
+	</div>
+
+	<!-- MENÃš PAG. INDEX DATOS SELECCIONADOS DE HOME -->
+
+	<div id="carReservationStatement" class="row mt-5 ml-3 mr-3">
+		<div class="col-12 ">
+			<div class="p-2 text-light text-justify">These are your car reservation details</div>
+		</div>
 	</div>
 
 
+	<nav class="row" id="homeDataSelectedNames">
+		<div class="col-2 pt-4 pb-1 border border-xl border-light text-center">
+			<a href="index.html" class="text-reset text-decoration-none"><i class="fas fa-map-marker-alt"></i> Pickup Office</a>
+		</div>
+		<div class="col-2 pt-4 pb-1 border border-xl border-light text-center">
+			<a href="fotos.html" class="text-reset text-decoration-none"><i class="fas fa-map-marker-alt"></i> Delivery Office</a>
+		</div>
+		<div class="col-3 pt-4 pb-1 border border-xl border-light text-center">
+			<a href="blog.html" class="text-reset text-decoration-none"><i class="far fa-calendar-alt"></i> Pickup Date</a>
+		</div>
+		<div class="col-3 pt-4 pb-1 border border-xl border-light text-center">
+			<a href="contacto.html" class="text-reset text-decoration-none"><i class="far fa-calendar-alt"></i> Delivery Date</a>
+		</div>
+	</nav>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	
-	
-</body>
-</html>
+
+	<nav class="row mb-5" id="homeDataSelectedValues">
+		<div class="col-2  border-none text-center" th:text="${session.officeName}"></div>
+		<div class="col-2  border-none text-center" th:text="${session.officeReturnName}"></div>
+		<div class="col-3  border-none text-center">
+			<span th:text="${#dates.format(session.reservation.initDate, 'dd-MM-yyyy')}"></span>
+		</div>
+		<div class="col-3  border-none text-center">
+			<span th:text="${#dates.format(session.reservation.finalDate, 'dd-MM-yyyy')}"></span>
+		</div>
+	</nav>
+
+
+	<!-- CAR SELECTION -->
+
+	<div id="carSelectionStatement" class="row mt-5 ml-3 mr-3">
+		<div class="col-12 ">
+			<div class="p-2 text-dark text-justify">Car selection</div>
+		</div>
+	</div>
+
+	<!-- CAR LIST. SAME TABLE AS VEHICLE SELECTION PAGE -->
+
+	<div class="col-12">
+
+		<table class="table table-striped table-hover mt-5 mb-5">
+
+			<tbody>
+				<tr class="row mb-3">
+					<td class="col-12 col-md-6">
+						<div class="h-100 d-flex align-items-center flex-column p-3">
+							<img style="max-width: 320px;" class="w-100 my-auto" th:src="@{${session.car.photo}}" />
+						</div>
+					</td>
+					<td class="col-12 col-md-4">
+						<div class="p-3">
+							<h2 th:text="${session.car.marca}"></h2>
+							<strong class="pb-3 d-block" th:text="${session.car.model}"></strong>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item bg-transparent text-dark">Transmission: <span th:text="${session.car.transmission}"></span>
+								</li>
+								<li class="list-group-item bg-transparent text-dark">AC: <span th:if="${session.car.ac} == true" th:text="Yes"></span> <span th:if="${session.car.ac} != true" th:text="No"></span>
+								</li>
+								<li class="list-group-item bg-transparent text-dark">Seats: <span th:text="${session.car.seats}"></span>
+								</li>
+								<li class="list-group-item bg-transparent text-dark">Doors: <span th:text="${session.car.doors}"></span>
+								</li>
+								<li class="list-group-item bg-transparent text-dark">Suitcases: <span th:text="${session.car.suitCases}"></span>
+								</li>
+							</ul>
+						</div>
+					</td>
+					<td class="col-12 col-md-2">
+						<div class="h-100 d-flex align-items-end flex-column p-3">
+							<div class="h-100 d-flex align-items-center">
+								<Strong th:inline="text"> [[${session.car.category.priceBase}]]â‚¬ <small class="float-right pr-2">&nbsp per day</small>
+								</strong>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<!-- EXTRAS SELECTION -->
+
+
+	<div id="extrasConfigurationStatement" class="row mt-5 ml-3 mr-3">
+		<div class="col-12 ">
+			<div class="p-2 text-dark text-justify">Extras configuration</div>
+		</div>
+	</div>
+
+	<!-- TABLA LISTADO EXTRAS -->
+
+
+	<div class="row p-3">
+		<div class="col-12 col-lg-6">
+			<strong class="py-3 d-block">Insurance</strong>
+			<ul class="list-group list-group-flush text-dark">
+				<li class="list-group-item bg-transparent" th:if="${session.reservation.topInsurance == false}">
+					<div>
+						<span>Basic third party insurance</span> <span class="float-right" th:text="${session.car.category.priceBaseInsurance} + â‚¬"></span>
+					</div>
+				</li>
+				<li class="list-group-item bg-transparent" th:if="${session.reservation.topInsurance != false}">
+					<div>
+						<span>All risks covering insurance</span> <span class="float-right" th:text="${session.car.category.priceTopInsurance} + â‚¬"></span>
+					</div>
+				</li>
+				<li class="list-group-item bg-transparent" th:if="${session.reservation.tireAndGlassProtection != false}">
+					<div>
+						<span>Tire and glass protection</span> <span class="float-right" th:text="${session.car.category.priceTireAndGlassProtection} + â‚¬"></span>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Extras comunes -->
+
+		<div class="col-12 col-lg-6">
+			<strong class="py-3 d-block">Other Extras</strong> <span class="p-3 text-dark" th:if="${#lists.isEmpty(session.reservation.extras)}">No extras selected!</span>
+
+			<ul class="list-group list-group-flush text-dark" th:each="extra:${session.reservation.extras}">
+
+				<li class="list-group-item bg-transparent">
+					<div>
+						<span class="w-100" th:inline="text"> [[${extra.descriptionExtra}]]<span class="float-right" th:text="${extra.price} + â‚¬"></span>
+						</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- AMOUNT PAYMENT SECTION -->
+
+	<div id="costStatement" class="row mt-5 mx-3">
+		<div class="col-12 ">
+			<div class="p-2 text-dark text-justify">Car reservation cost</div>
+		</div>
+	</div>
+	<div id="costAmount" class="row mt-1 mb-5 mx-3">
+		<div class="col-12 ">
+			<div class="p-2 text-dark text-justify">
+				Car base price: <span th:inline="text"> [[${session.car.category.priceBase}]]â‚¬ x <span th:inline="text">[[${session.differenceInDays}]] days = <span
+						th:text="${#numbers.formatDecimal(sumCarBase, 0, 'POINT', 2, 'COMMA')}"></span>
+				</span>
+				</span><span>â‚¬</span>
+			</div>
+		</div>
+		<div class="col-12 ">
+			<div class="p-2 text-dark text-justify">
+				Insurance and Extras price: <span th:text="${#numbers.formatDecimal(sumExtras, 0, 'POINT', 2, 'COMMA')}"></span><span>â‚¬</span>
+			</div>
+		</div>
+		<div class="col-12 ">
+			<div class="p-2 text-dark text-justify">
+				Total amount: <span th:text="${#numbers.formatDecimal(sumRentPrice, 0, 'POINT', 2, 'COMMA')}"></span><span>â‚¬</span>
+			</div>
+		</div>
+	</div>
+	<form th:action="@{/reservation/confirmation}" method="post">
+		<div th:if="${session.client != null}" id="confirm" class="row mt-1 mb-5 ml-3 mr-3">
+			<div class="col-12 ">
+				<button type="submit" class="btn font-weight-bold">Confirm</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<th:block layout:fragment="scripts">
+	<script type="text/javascript">
+		console.log('Hello World');
+	</script>
+</th:block>
