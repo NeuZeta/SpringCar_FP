@@ -25,8 +25,10 @@ public class VehicleSelectionController {
 
 	@Autowired
 	ICarService carService;
+	
 	@Autowired
 	IOfficeMasterService officeService;
+	
 	@GetMapping("/reservation/vehicleselect")
 	public String showVehicleList (HttpSession session, Model model) {	
 		
@@ -53,7 +55,7 @@ public class VehicleSelectionController {
 		return "reservation/vehicleselect/index";
 	}
 	
-	@GetMapping("/reservation/selectCar")
+	@GetMapping("/reservation/vehicleselect/selectCar")
 	public String showPeriodSelector(HttpSession session, @RequestParam("id") Long idCar) {
 		session.setAttribute("car", carService.findById(idCar));
 		Reservation rent = (Reservation) session.getAttribute("reservation");

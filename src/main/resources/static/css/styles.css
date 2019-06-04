@@ -1,29 +1,36 @@
-html,
-body {
-  height: 100%;
+html, body {
+	height: 100%;
 }
 
 #page-content {
-  flex: 1 0 auto;
+	flex: 1 0 auto;
 }
 
 #sticky-footer {
-  flex-shrink: none;
+	flex-shrink: none;
 }
 
 .btn {
 	color: white;
-    background-color: #c8d864;
-    border-radius: 0;
+	background-color: #c8d864;
+	border-radius: 0;
 }
 
 .btn:hover {
-	color:white;
-    background-color: #afbd57;
+	color: white;
+	background-color: #afbd57;
 }
 
 /*<!--Bootstrap Custom checkbox-->*/
-.custom-control-input:checked~.custom-control-label::before {
-    border-color: green;
-    background-color: green;
+.custom-control-input:checked ~.custom-control-label::before {
+	border-color: #afbd57;
+	background-color: #c8d864;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+	content: none;
+}
+
+.breadcrumb-item.active{
+	color: #c8d864;
 }

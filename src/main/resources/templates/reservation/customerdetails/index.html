@@ -7,191 +7,326 @@
 
 <div layout:fragment="page_content" id="page_content" class="container h-100 bg-white overflow-hidden">
 
-		<!-- ESTADO DEL PROCESO DE RESERVA -->
+	<!-- ESTADO DEL PROCESO DE RESERVA -->
 
-
-		<nav aria-label="breadcrumb" class="row">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Vehicle selection</a></li>
-				<li class="breadcrumb-item"><a href="#">Extras</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Driver details</li>
-				<li class="breadcrumb-item"><a href="#">Booking confirmation</a></li>
+	<div class="d-flex justify-content-center">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb purple lighten-4 bg-white">
+				<li class="breadcrumb-item"><strong class="black-text">Vehicle selection</strong><i class="fas fa-angle-right mx-2" aria-hidden="true"></i></li>
+				<li class="breadcrumb-item"><strong class="black-text">Extras</strong><i class="fas fa-angle-right mx-2" aria-hidden="true"></i></li>
+				<li class="breadcrumb-item active"><strong>Driver details</strong><i class="fas fa-angle-right mx-2" aria-hidden="true"></i></li>
+				<li class="breadcrumb-item"><strong>Booking confirmation</strong></li>
 			</ol>
 		</nav>
+	</div>
 
 
-		<!-- LOGIN MENU -->
+	<!-- LOGIN MENU -->
 
-		<!-- Si el usuario está logeado, mostramos: -->
-		<div th:if="${session.client != null}" class=" text-dark">
-			<form th:object="${session.client}" method="get">
-				<div class="form-group form-row mt-5">
-					<div class="col-12 col-md-6">
-						<label for="name">First Name </label>
-						<input type="text" readonly class="form-control" id="name" name="name" aria-describedby="nameHelp" th:placeholder="${session.client.name}">
-					</div>
+	<!-- Si el usuario está logeado, mostramos: -->
 
-					<div class="col-12 col-md-6">
-						<label for="surname">Last Name </label>
-						<input type="text" readonly class="form-control" id="surname" name="surname" aria-describedby="surnameHelp" th:placeholder="${session.client.surname}">
-					</div>
+<!-- 	<div class="row align-items-center h-100"> -->
+<!-- 		<div class="row col-sm-9 col-md-7 col-lg-5 mx-auto"> -->
+			
+<!-- 			<div class="col-12 col-md-6"> -->
+<!-- 				<p>First Name: </p> -->
+<!-- 				<p id="name" th:text="${session.client.name}"></p> -->
+<!-- 			</div> -->
+			
+<!-- 			<div class="col-12 col-md-6"> -->
+<!-- 				<p>Last Name: </p> -->
+<!-- 				<p id="name" th:text="${session.client.surname}"></p> -->
+<!-- 			</div> -->
+			
+<!-- 		</div> -->
+<!-- 	</div> -->
+
+
+	<div th:if="${session.client != null}">
+		<form th:object="${session.client}" method="get">
+			<div class="form-group form-row mt-5">
+				<div class="col-12 col-md-6">
+					<label for="name">First Name </label>
+					<input type="text" readonly class="form-control" id="name" name="name" aria-describedby="nameHelp" th:placeholder="${session.client.name}">
 				</div>
 
-				<div class="form-group form-row">
-					<div class="col-12 col-md-6">
-						<label for="idNumber"> ID Number </label>
-						<input type="text" readonly class="form-control" id="idNumber" name="idNumber" aria-describedby="idNumberHelp" th:placeholder="${session.client.idNumber}">
-					</div>
-					<div class="col-12 col-md-6">
-						<label for="phoneNumber">Phone Number </label>
-						<input type="tel" readonly class="form-control" id="phoneNumber" name="phoneNumber" aria-describedby="phoneNumberHelp" th:placeholder="${session.client.phoneNumber}">
-					</div>
+				<div class="col-12 col-md-6">
+					<label for="surname">Last Name </label>
+					<input type="text" readonly class="form-control" id="surname" name="surname" aria-describedby="surnameHelp" th:placeholder="${session.client.surname}">
 				</div>
-
-				<div class="form-group form-row">
-					<div class="col-12">
-						<label for="email">E-mail</label>
-						<input type="email" readonly class="form-control" id="email" name="email" aria-describedby="emailHelp" th:placeholder="${session.client.email}">
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<!-- Si el usuario no está logeado, mostramos: -->
-		<div th:if="${session.client == null}" class=" text-dark">
-			<div class="col-5 pt-3 pl-3">Please, login to proceed with your booking.</div>
-			<form th:action="@{/reservation/customerdetails}" th:object="${login}" method="post">
-				<div class="form-group form-row pt-3 pl-3">
-					<div class="col-4">
-						<label for="userName">Username</label>
-						<input type="text" class="form-control" id="userName" aria-describedby="userNameHelp" name="userName" placeholder="Enter username" required>
-					</div>
-				</div>
-
-				<div class="form-group form-row pt-3 pl-3">
-					<div class="col-4">
-						<label for="password">Password</label>
-						<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Enter password" aria-required="true" required>
-						<span th:if="${session.error_userAuthentification != null}" th:text="${session.error_userAuthentification}" id="passwordHelp" class="form-control"></span>
-					</div>
-				</div>
-				<div class="col-6">
-					<button type="submit" class="btn justify-content-left">Login</button>
-				</div>
-			</form>
-			<div class="col-5 pt-3 pl-3">New User? You can register here:</div>
-			<div class="col-5 text-left pt-3 pl-3">
-				<button type="button" class="btn" data-toggle="modal" data-target="#registrationModalForm">Sign in</button>
 			</div>
-		</div>
 
-		<!-- REGISTER MENU. SAME FORM AS REGISTRATION PAGE BUT IN A MODAL SECTION -->
+			<div class="form-group form-row">
+				<div class="col-12 col-md-6">
+					<label for="idNumber"> ID Number </label>
+					<input type="text" readonly class="form-control" id="idNumber" name="idNumber" aria-describedby="idNumberHelp" th:placeholder="${session.client.idNumber}">
+				</div>
+				<div class="col-12 col-md-6">
+					<label for="phoneNumber">Phone Number </label>
+					<input type="tel" readonly class="form-control" id="phoneNumber" name="phoneNumber" aria-describedby="phoneNumberHelp" th:placeholder="${session.client.phoneNumber}">
+				</div>
+			</div>
 
-		<div class="modal fade" id="registrationModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">Registration form</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
+			<div class="form-group form-row">
+				<div class="col-12">
+					<label for="email">E-mail</label>
+					<input type="email" readonly class="form-control" id="email" name="email" aria-describedby="emailHelp" th:placeholder="${session.client.email}">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<!-- Si el usuario no está logeado, mostramos: -->
+
+	<div th:if="${session.client == null}" class="row align-items-center h-100">
+		<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+			<div class="card my-5">
+				<div class="card-body">
+					<h5 class="card-title text-center">Login</h5>
+					<form class="" th:action="@{/user/login}" th:object="${login}" method="post">
+						<div class="form-group">
+							<label for="inputEmail">Username</label>
+							<input type="text" id="userName" name="userName" class="form-control" placeholder="Username" required autofocus>
+						</div>
+
+						<div class="form-group">
+							<label for="inputPassword">Password</label>
+							<input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+							<small th:if="${session.error_userAuthentification != null}" th:text="${session.error_userAuthentification}" id="passwordHelp" class="text-danger"></small>
+						</div>
+
+						<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
+						<hr class="my-4">
+						<button type="button" class="btn btn-lg btn-google btn-block text-uppercase" data-toggle="modal" data-target="#registrationModalForm">
+							<i class="fas fa-user-circle mr-2"></i> Register
 						</button>
-					</div>
-					<div class="modal-body">
-
-						<form th:action="@{/reservation/customerdetails/registration}" th:object="${client}" method="post">
-							<div class="form-group form-row mt-5">
-								<div class="col-12 col-md-6">
-									<label for="name">First Name </label>
-									<input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter your name" required>
-								</div>
-
-								<div class="col-12 col-md-6">
-									<label for="surname">Last Name </label>
-									<input type="text" class="form-control" id="surname" name="surname" aria-describedby="surnameHelp" placeholder="Enter your last name" required>
-								</div>
-							</div>
-
-							<div class="form-group form-row">
-								<div class="col-12">
-									<label for="address">Address</label>
-									<input type="text" class="form-control" id="address" name="address" aria-describedby="addressHelp" placeholder="Enter your postal address" required>
-								</div>
-							</div>
-							<div class="form-group form-row">
-								<div class="col-12 col-md-6">
-									<label for="city">City </label>
-									<input type="text" class="form-control" id="city" name="city" aria-describedby="cityHelp" placeholder="Enter your city" required>
-								</div>
-
-								<div class="col-12 col-md-6">
-									<label for="postCode">Postal Code </label>
-									<input type="text" class="form-control" id="postCode" name="postCode" aria-describedby="postCodeHelp" placeholder="Enter your postal Code number" required>
-								</div>
-							</div>
-							<div class="form-group form-row">
-								<div class="col-12">
-									<label for="country">Country</label>
-									<input type="text" class="form-control" id="country" name="country" aria-describedby="countryHelp" placeholder="Enter your country" required>
-								</div>
-							</div>
-							<div class="form-group form-row">
-								<div class="col-12 col-md-6">
-									<label for="phoneNumber">Phone Number </label>
-									<input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" aria-describedby="phoneNumberHelp" placeholder="Enter your phone number" required>
-								</div>
-
-								<div class="col-12 col-md-6">
-									<label for="idNumber"> ID Number </label>
-									<input type="text" class="form-control" id="idNumber" name="idNumber" aria-describedby="idNumberHelp" placeholder="Enter your ID number" required>
-								</div>
-							</div>
-
-							<div class="form-group form-row">
-								<div class="col-12">
-									<label for="email">E-mail</label>
-									<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter your e-mail">
-								</div>
-							</div>
-
-							<div class="form-group form-row">
-								<div class="col-6">
-									<label for="userName">Username</label>
-									<input type="text" class="form-control" id="userName" name="userName" aria-describedby="userNameHelp" placeholder="Enter username" required>
-								</div>
-							</div>
-							<div class="form-group form-row">
-								<div class="col-12 col-md-6">
-									<label for="password">Password</label>
-									<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Enter password" aria-required="true" required>
-								</div>
-								<div class="col-12 col-md-6">
-									<label for="passwordConfirmed">Confirm password</label>
-									<input type="password" class="form-control" id="passwordConfirmed" aria-describedby="passwordConfirmedHelp" placeholder="Confirm password" aria-required="true" required>
-								</div>
-							</div>
-
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required>
-								<label class="form-check-label" for="defaultCheck1"> I will be 18 years or oder at the time of the rental. </label>
-							</div>
-
-							<div class="col-12 text-center mt-3 mb-5">
-								<button type="submit" class="btn btn-lg">Register</button>
-							</div>
-						</form>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<div th:if="${session.client != null}" id="confirm" class="row mt-1 mb-5 ml-3 mr-3">
-			<div class="col-12 ">
-				<a class="btn font-weight-bold" href="/reservation/confirmation">Confirm</a>
+
+	<!-- 		<div th:if="${session.client == null}" class=" text-dark"> -->
+	<!-- 			<div class="col-5 pt-3 pl-3">Please, login to proceed with your booking.</div> -->
+	<!-- 			<form th:action="@{/reservation/customerdetails}" th:object="${login}" method="post"> -->
+	<!-- 				<div class="form-group form-row pt-3 pl-3"> -->
+	<!-- 					<div class="col-4"> -->
+	<!-- 						<label for="userName">Username</label> -->
+	<!-- 						<input type="text" class="form-control" id="userName" aria-describedby="userNameHelp" name="userName" placeholder="Enter username" required> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+
+	<!-- 				<div class="form-group form-row pt-3 pl-3"> -->
+	<!-- 					<div class="col-4"> -->
+	<!-- 						<label for="password">Password</label> -->
+	<!-- 						<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Enter password" aria-required="true" required> -->
+	<!-- 						<span th:if="${session.error_userAuthentification != null}" th:text="${session.error_userAuthentification}" id="passwordHelp" class="form-control"></span> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 				<div class="col-6"> -->
+	<!-- 					<button type="submit" class="btn justify-content-left">Login</button> -->
+	<!-- 				</div> -->
+	<!-- 			</form> -->
+	<!-- 			<div class="col-5 pt-3 pl-3">New User? You can register here:</div> -->
+	<!-- 			<div class="col-5 text-left pt-3 pl-3"> -->
+	<!-- 				<button type="button" class="btn" data-toggle="modal" data-target="#registrationModalForm">Sign in</button> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+
+	<!-- REGISTER MENU. SAME FORM AS REGISTRATION PAGE BUT IN A MODAL SECTION -->
+
+	<div class="modal fade" id="registrationModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Register</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/user/registration}" th:object="${client}" method="post">
+						<div class="row form-row px-0">
+							<div class="form-group col-lg-6">
+								<label for="inputName">First Name</label>
+								<input type="text" id="inputName" name="name" class="form-control" placeholder="First Name" required autofocus>
+							</div>
+
+							<div class="form-group col-lg-6">
+								<label for="inputSurname">Last Name</label>
+								<input type="text" id="inputSurname" name="surname" class="form-control" placeholder="Last Name" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputAddress">Postal Address</label>
+							<input type="text" id="inputAddress" name="address" class="form-control" placeholder="Postal Address" required>
+						</div>
+						<div class="row form-row px-0">
+							<div class="form-group col-lg-4">
+								<label for="inputPostCode">Postal Code</label>
+								<input type="text" id="inputPostCode" name="postCode" class="form-control" placeholder="Postal Code" required autofocus>
+							</div>
+							<div class="form-group col-lg-4">
+								<label for="inputCity">City</label>
+								<input type="text" id="inputCity" name="city" class="form-control" placeholder="City" required autofocus>
+							</div>
+							<div class="form-group col-lg-4">
+								<label for="inputCountry">Country</label>
+								<input type="text" id="inputCountry" name="country" class="form-control" placeholder="Country" required autofocus>
+							</div>
+						</div>
+						<div class="row form-row px-0">
+							<div class="form-group col-lg-6">
+								<label for="inputPhoneNumber">Phone Number</label>
+								<input type="text" id="inputPhoneNumber" name="phoneNumber" class="form-control" placeholder="Phone Number" required autofocus>
+							</div>
+
+							<div class="form-group col-lg-6">
+								<label for="inputID">ID Number</label>
+								<input type="text" id="inputID" name="idNumber" class="form-control" placeholder="ID Number" required>
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label for="inputEmail">Email</label>
+							<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required>
+						</div>
+						<div class="row form-row px-0">
+							<div class="form-group col-lg-6">
+								<label for="inputUsername">Username</label>
+								<input type="text" id="inputUsername" name="userName" class="form-control" placeholder="Username" required autofocus>
+								<small th:if="${session.error_usernameTaken != null}" th:text="${session.error_usernameTaken}" id="passwordHelp" class="text-danger"></small>
+							</div>
+						</div>
+						<div class="row form-row px-0">
+							<div class="form-group col-lg-6">
+								<label for="inputPassword">Password</label>
+								<input type="password" id="inputPassword" name=password class="form-control" placeholder="Password" required>
+							</div>
+							<div class="form-group col-lg-6">
+								<label for="inputPassword">Confirm Password</label>
+								<input type="password" id="inputPassword" name=password class="form-control" placeholder="Confirm Password" required>
+							</div>
+						</div>
+						<div class="form-group pl-4">
+							<input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required>
+							<label class="form-check-label" for="defaultCheck1"> I will be 18 years or oder at the time of the rental. </label>
+						</div>
+						<button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
+							<i class="fas fa-user-circle mr-2"></i> Register
+						</button>
+					</form>
+				</div>
 			</div>
 		</div>
+	</div>
 
-<th:block layout:fragment="scripts">
-	<script type="text/javascript">
-		console.log('Hello World');
-	</script>
-</th:block>
+	<!-- 		<div class="modal fade" id="registrationModalForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"> -->
+	<!-- 			<div class="modal-dialog modal-dialog-centered" role="document"> -->
+	<!-- 				<div class="modal-content"> -->
+	<!-- 					<div class="modal-header"> -->
+	<!-- 						<h5 class="modal-title" id="exampleModalLongTitle">Registration form</h5> -->
+	<!-- 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+	<!-- 							<span aria-hidden="true">&times;</span> -->
+	<!-- 						</button> -->
+	<!-- 					</div> -->
+	<!-- 					<div class="modal-body"> -->
+
+	<!-- 						<form th:action="@{/reservation/customerdetails/registration}" th:object="${client}" method="post"> -->
+	<!-- 							<div class="form-group form-row mt-5"> -->
+	<!-- 								<div class="col-12 col-md-6"> -->
+	<!-- 									<label for="name">First Name </label> -->
+	<!-- 									<input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter your name" required> -->
+	<!-- 								</div> -->
+
+	<!-- 								<div class="col-12 col-md-6"> -->
+	<!-- 									<label for="surname">Last Name </label> -->
+	<!-- 									<input type="text" class="form-control" id="surname" name="surname" aria-describedby="surnameHelp" placeholder="Enter your last name" required> -->
+	<!-- 								</div> -->
+	<!-- 							</div> -->
+
+	<!-- 							<div class="form-group form-row"> -->
+	<!-- 								<div class="col-12"> -->
+	<!-- 									<label for="address">Address</label> -->
+	<!-- 									<input type="text" class="form-control" id="address" name="address" aria-describedby="addressHelp" placeholder="Enter your postal address" required> -->
+	<!-- 								</div> -->
+	<!-- 							</div> -->
+	<!-- 							<div class="form-group form-row"> -->
+	<!-- 								<div class="col-12 col-md-6"> -->
+	<!-- 									<label for="city">City </label> -->
+	<!-- 									<input type="text" class="form-control" id="city" name="city" aria-describedby="cityHelp" placeholder="Enter your city" required> -->
+	<!-- 								</div> -->
+
+	<!-- 								<div class="col-12 col-md-6"> -->
+	<!-- 									<label for="postCode">Postal Code </label> -->
+	<!-- 									<input type="text" class="form-control" id="postCode" name="postCode" aria-describedby="postCodeHelp" placeholder="Enter your postal Code number" required> -->
+	<!-- 								</div> -->
+	<!-- 							</div> -->
+	<!-- 							<div class="form-group form-row"> -->
+	<!-- 								<div class="col-12"> -->
+	<!-- 									<label for="country">Country</label> -->
+	<!-- 									<input type="text" class="form-control" id="country" name="country" aria-describedby="countryHelp" placeholder="Enter your country" required> -->
+	<!-- 								</div> -->
+	<!-- 							</div> -->
+	<!-- 							<div class="form-group form-row"> -->
+	<!-- 								<div class="col-12 col-md-6"> -->
+	<!-- 									<label for="phoneNumber">Phone Number </label> -->
+	<!-- 									<input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" aria-describedby="phoneNumberHelp" placeholder="Enter your phone number" required> -->
+	<!-- 								</div> -->
+
+	<!-- 								<div class="col-12 col-md-6"> -->
+	<!-- 									<label for="idNumber"> ID Number </label> -->
+	<!-- 									<input type="text" class="form-control" id="idNumber" name="idNumber" aria-describedby="idNumberHelp" placeholder="Enter your ID number" required> -->
+	<!-- 								</div> -->
+	<!-- 							</div> -->
+
+	<!-- 							<div class="form-group form-row"> -->
+	<!-- 								<div class="col-12"> -->
+	<!-- 									<label for="email">E-mail</label> -->
+	<!-- 									<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter your e-mail"> -->
+	<!-- 								</div> -->
+	<!-- 							</div> -->
+
+	<!-- 							<div class="form-group form-row"> -->
+	<!-- 								<div class="col-6"> -->
+	<!-- 									<label for="userName">Username</label> -->
+	<!-- 									<input type="text" class="form-control" id="userName" name="userName" aria-describedby="userNameHelp" placeholder="Enter username" required> -->
+	<!-- 								</div> -->
+	<!-- 							</div> -->
+	<!-- 							<div class="form-group form-row"> -->
+	<!-- 								<div class="col-12 col-md-6"> -->
+	<!-- 									<label for="password">Password</label> -->
+	<!-- 									<input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Enter password" aria-required="true" required> -->
+	<!-- 								</div> -->
+	<!-- 								<div class="col-12 col-md-6"> -->
+	<!-- 									<label for="passwordConfirmed">Confirm password</label> -->
+	<!-- 									<input type="password" class="form-control" id="passwordConfirmed" aria-describedby="passwordConfirmedHelp" placeholder="Confirm password" aria-required="true" required> -->
+	<!-- 								</div> -->
+	<!-- 							</div> -->
+
+	<!-- 							<div class="form-check"> -->
+	<!-- 								<input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required> -->
+	<!-- 								<label class="form-check-label" for="defaultCheck1"> I will be 18 years or oder at the time of the rental. </label> -->
+	<!-- 							</div> -->
+
+	<!-- 							<div class="col-12 text-center mt-3 mb-5"> -->
+	<!-- 								<button type="submit" class="btn btn-lg">Register</button> -->
+	<!-- 							</div> -->
+	<!-- 						</form> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+
+	<div th:if="${session.client != null}" id="confirm" class="row mt-1 mb-5 ml-3 mr-3">
+		<div class="col-12 ">
+			<a class="btn font-weight-bold" href="/reservation/confirmation">Confirm</a>
+		</div>
+	</div>
+
+	<th:block layout:fragment="scripts">
+		<script type="text/javascript">
+			console.log('Hello World');
+		</script>
+	</th:block>
