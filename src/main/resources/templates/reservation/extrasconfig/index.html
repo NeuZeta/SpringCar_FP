@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base}">
 
 <head>
-<title>Home page</title>
+<title>Extras</title>
 </head>
 
 <div layout:fragment="page_content" id="page_content" class="container h-100 bg-white overflow-hidden">
@@ -49,36 +49,6 @@
 			<span th:text="${#dates.format(session.reservation.finalDate, 'dd-MM-yyyy')}"></span>
 		</div>
 	</nav>
-
-
-	<!-- 	<nav class="row" id="homeDataSelectedNames"> -->
-	<!-- 		<div class="col-2 pt-4 pb-1 border border-xl border-light text-center"> -->
-	<!-- 			<a href="#" class="text-reset text-decoration-none"><i class="fas fa-map-marker-alt"></i> Pickup Office</a> -->
-	<!-- 		</div> -->
-	<!-- 		<div class="col-2 pt-4 pb-1 border border-xl border-light text-center"> -->
-	<!-- 			<a href="#" class="text-reset text-decoration-none"><i class="fas fa-map-marker-alt"></i> Delivery Office</a> -->
-	<!-- 		</div> -->
-	<!-- 		<div class="col-3 pt-4 pb-1 border border-xl border-light text-center"> -->
-	<!-- 			<a href="#" class="text-reset text-decoration-none"><i class="far fa-calendar-alt"></i> Pickup Date</a> -->
-	<!-- 		</div> -->
-	<!-- 		<div class="col-3 pt-4 pb-1 border border-xl border-light text-center"> -->
-	<!-- 			<a href="#" class="text-reset text-decoration-none"><i class="far fa-calendar-alt"></i> Delivery Date</a> -->
-	<!-- 		</div> -->
-	<!-- 	</nav> -->
-
-
-	<!-- 	<nav class="row mb-5" id="homeDataSelectedValues"> -->
-	<!-- 		<div class="col-2  border-none text-center" th:text="${session.officeName}"></div> -->
-	<!-- 		<div class="col-2  border-none text-center" th:text="${session.officeReturnName}"></div> -->
-	<!-- 		<div class="col-3  border-none text-center"> -->
-	<!-- 			<span th:text="${#dates.format(session.reservation.initDate, 'dd-MM-yyyy')}"></span> -->
-	<!-- 		</div> -->
-	<!-- 		<div class="col-3  border-none text-center"> -->
-	<!-- 			<span th:text="${#dates.format(session.reservation.finalDate, 'dd-MM-yyyy')}"></span> -->
-	<!-- 		</div> -->
-	<!-- 	</nav> -->
-
-
 
 	<!-- CAR LIST. SAME TABLE AS VEHICLE SELECTION PAGE -->
 

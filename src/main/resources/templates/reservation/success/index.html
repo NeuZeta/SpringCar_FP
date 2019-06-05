@@ -6,34 +6,33 @@
 </head>
 
 <div layout:fragment="page_content" id="page_content" class="container h-100 bg-white overflow-hidden">
-		
-		<!-- CONFIRMATION MESSAGE. CHEQUEAR NOMBRES VARIABLES DE LA RESERVA FINAL -->
-	
-		<div class="mt-5 mb-5 text-center">
-			  <img src="/images/logo_alpha.png" class="img-fluid max-width: 100% height: auto" alt="Spring Car company logo">
-		</div>
+
+	<!-- CONFIRMATION MESSAGE. CHEQUEAR NOMBRES VARIABLES DE LA RESERVA FINAL -->
+
+	<div class="mt-5 mb-5 text-center">
+		<img src="/images/logo_alpha.png" class="img-fluid max-width: 100% height: auto" alt="Spring Car company logo">
+	</div>
 
 	<div class="row mt-5">
 		<div class="h3 col-12 text-center">
-            Congratulations <span th:text="${session.client.name}"></span>! We have correctly received your booking.<br>
-            These are your booking details:
-		 		  		  
+			Congratulations <span th:text="${session.client.name}"></span>! We have correctly received your booking.<br> These are your booking details:
+
 		</div>
 	</div>
-	
+
 	<div class="row offset-2 ml-3 mr-3 mb-5">
 		<div id="rentalDetails" class="col-6 offset-md-3 text-center">
-		 	We will be waiting for you at our SpringCar office: <span class="variableRentalDetails" th:text="${session.reservation.officeCode}"></span>
+			We will be waiting for you at our SpringCar office: <span class="variableRentalDetails" th:text="${session.officeName}"></span>
 		</div>
 		<div id="rentalDetails" class="col-6 offset-md-3 text-center">
-		 	Booking date: <span th:text="${#dates.format(session.reservation.initDate, 'dd-MM-yyyy')}"></span>
+			Booking date: <span th:text="${#dates.format(session.reservation.initDate, 'dd-MM-yyyy')}"></span>
 		</div>
 		<div id="rentalDetails" class="col-6 offset-md-3 text-center">
-		 	Booking number: <span th:text="${session.reservation.idReservation}"></span>
+			Booking number: <span th:text="${session.reservation.idReservation}"></span>
 		</div>
 	</div>
-	
-			
+</div>
+
 <th:block layout:fragment="scripts">
 	<script type="text/javascript">
 		console.log('Hello World');

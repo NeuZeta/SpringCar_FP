@@ -21,8 +21,6 @@
 	</div>
 
 
-	<!-- LOGIN MENU -->
-
 	<!-- Si el usuario está logeado, mostramos: -->
 
 	<div th:if="${session.client != null}" class="row align-items-center">
@@ -173,7 +171,7 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 <th:block layout:fragment="scripts">
 	<script th:if="${session.error_usernameTaken != null}" type="text/javascript">
 		$(window).on('load', function() {

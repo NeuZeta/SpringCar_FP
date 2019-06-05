@@ -50,39 +50,6 @@
 		</div>
 	</nav>
 
-
-	<!-- 		<nav class="row" id="homeDataSelectedNames"> -->
-	<!-- 			<div class="col-2 pt-4 pb-1 border border-xl border-light text-center"> -->
-	<!-- 				<a href="index.html" class="text-reset text-decoration-none"><i class="fas fa-map-marker-alt"></i> Pickup Office</a> -->
-	<!-- 			</div> -->
-	<!-- 			<div class="col-2 pt-4 pb-1 border border-xl border-light text-center"> -->
-	<!-- 				<a href="fotos.html" class="text-reset text-decoration-none"><i class="fas fa-map-marker-alt"></i> Delivery Office</a> -->
-	<!-- 			</div> -->
-	<!-- 			<div class="col-3 pt-4 pb-1 border border-xl border-light text-center"> -->
-	<!-- 				<a href="blog.html" class="text-reset text-decoration-none"><i class="far fa-calendar-alt"></i> Pickup Date</a> -->
-	<!-- 			</div> -->
-	<!-- 			<div class="col-3 pt-4 pb-1 border border-xl border-light text-center"> -->
-	<!-- 				<a href="contacto.html" class="text-reset text-decoration-none"><i class="far fa-calendar-alt"></i> Delivery Date</a> -->
-	<!-- 			</div> -->
-
-	<!-- 			<div class="col-2 text-center mt-3"> -->
-	<!-- 				<button type="button" class="btn" data-toggle="collapse" data-target="#importHomeDataSelectionForm" aria-expanded="false" aria-controls="importHomeDataSelectionForm">Change</button> -->
-	<!-- 			</div> -->
-	<!-- 		</nav> -->
-
-
-	<!-- 	<nav class="row mb-5" id="homeDataSelectedValues"> -->
-	<!-- 		<div class="col-2  border-none text-center" th:text="${session.officeName}"></div> -->
-	<!-- 		<div class="col-2  border-none text-center" th:text="${session.officeReturnName}"></div> -->
-	<!-- 		<div class="col-3  border-none text-center"> -->
-	<!-- 			<span th:text="${#dates.format(session.reservation.initDate, 'dd-MM-yyyy')}"></span> -->
-	<!-- 		</div> -->
-	<!-- 		<div class="col-3  border-none text-center"> -->
-	<!-- 			<span th:text="${#dates.format(session.reservation.finalDate, 'dd-MM-yyyy')}"></span> -->
-	<!-- 		</div> -->
-	<!-- 	</nav> -->
-
-
 	<!-- MENÚ PAG. HOME PARA CAMBIAR DATOS TRAS BOTÓN CHANGE -->
 
 	<div class="collapse" id="importHomeDataSelectionForm">
@@ -131,43 +98,7 @@
 		</form>
 	</div>
 
-	<!-- 	<div class="collapse" id="importHomeDataSelectionForm"> -->
-	<!-- 		<form th:action="@{/reservation/vehicleselect}" th:object="${session.reservation}" method="post"> -->
-	<!-- 			<div class="form-group form-row mt-5 mb-5  d-flex"> -->
-	<!-- 				<div class="col-12 col-md-2 offset"> -->
-	<!-- 					<select id="officeSelection" name="officeCode" class="form-control"> -->
-	<!-- 						<option value="">Pickup office</option> -->
-	<!-- 						<option th:each="office:${offices}" th:value="${office.officeCode}" th:text="${office.officeName}" th:selected="${office.officeCode == session.reservation.officeCode}"></option> -->
-	<!-- 					</select> -->
-	<!-- 				</div> -->
-
-	<!-- 				<div class="col-12 col-md-2"> -->
-	<!-- 					<select id="officeSelection" name="officeReturnCode" class="form-control"> -->
-	<!-- 						<option value="">Delivery office</option> -->
-	<!-- 						<option th:each="office:${offices}" th:value="${office.officeCode}" th:text="${office.officeName}" th:selected="${office.officeCode == session.reservation.officeCode}"></option> -->
-	<!-- 					</select> -->
-	<!-- 				</div> -->
-	<!-- 				<div class="col-12 col-md-3"> -->
-	<!-- 					<label for="initDate">Pickup date:</label> -->
-	<!-- 					<input type="date" name="initDate" id="initDate" step="1" min="2019-06-01" max="2020-06-01" value="2019-06-01"> -->
-	<!-- 				</div> -->
-	<!-- 				<div class="col-12 col-md-3"> -->
-
-	<!-- 					<label for="finalDate">Delivery date:</label> -->
-	<!-- 					<input type="date" name="finalDate" id="finalDate" step="1" min="2019-06-01" max="2020-06-01" value="2019-06-01"> -->
-	<!-- 				</div> -->
-	<!-- 				<div class="col-12 col-md-1"> -->
-	<!-- 					<button type="submit" class="btn font-weight-bold">Submit</button> -->
-	<!-- 				</div> -->
-	<!-- 				<div class="col-6 ml-auto p-2" th:if="${session.errorDates != null}"> -->
-	<!-- 					<span class="form-control" id="passwordHelp" th:text="${session.errorDates}"></span> -->
-	<!-- 				</div> -->
-	<!-- 			</div> -->
-
-	<!-- 		</form> -->
-	<!-- 	</div> -->
-
-	<!-- TO-DO EJECUCIÓN FILTRO POR CATEGORIA, TRANSMISIÓN Y PRECIO -->
+	<!-- FILTRO POR CATEGORIA, TRANSMISIÓN Y PRECIO -->
 
 	<div id="carFilterForm">
 		<form th:action="@{/reservation/vehicleselect/filter}" method="post">
