@@ -91,7 +91,7 @@
 				<tr class="row mb-3">
 					<td class="col-12 col-md-6">
 						<div class="h-100 d-flex align-items-center flex-column p-3">
-							<img style="max-width: 320px;" class="w-100 my-auto" th:src="@{${session.car.photo}}" />
+							<img style="max-width: 320px;" class="my-auto" th:src="@{${session.car.photo}}" />
 						</div>
 					</td>
 					<td class="col-12 col-md-4">
@@ -191,7 +191,7 @@
 	<form th:action="@{/reservation/confirmation}" method="post">
 		<div th:if="${session.client != null}" id="confirm" class="row mt-1 mb-5 ml-3 mr-3">
 			<div class="col-12 ">
-				<button type="submit" class="btn font-weight-bold">Confirm</button>
+				<button type="submit" class="btn">Confirm</button>
 			</div>
 		</div>
 	</form>

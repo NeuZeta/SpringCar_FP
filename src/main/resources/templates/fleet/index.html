@@ -53,7 +53,7 @@
 				<tr class="row mb-3" th:each="car:${session.fleet}">
 					<td class="col-12 col-md-6">
 						<div class="h-100 d-flex align-items-center flex-column p-3">
-							<img style="max-width: 320px;" class="w-100 my-auto" th:src="@{${car.photo}}" />
+							<img style="max-width: 320px;" class="my-auto" th:src="@{${car.photo}}" />
 						</div>
 					</td>
 					<td class="col-12 col-md-4">
@@ -76,7 +76,7 @@
 							<div class="h-100 d-flex align-items-center">
 								<Strong th:inline="text"> [[${car.category.priceBase}]]&euro; <small class="float-right pr-2">&nbsp per day</small></strong>
 							</div>
-							<a th:href="@{selectCar(id=${car.idCar})}" class="btn btn-sm font-weight-bold mt-auto">Choose</a>
+							<a th:href="@{selectCar(id=${car.idCar})}" class="btn btn-sm mt-auto w-100">Choose</a>
 						</div>
 					</td>
 				</tr>

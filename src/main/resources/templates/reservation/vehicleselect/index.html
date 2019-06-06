@@ -65,7 +65,7 @@
 
 			<div class="col-12 col-lg pb-3 pb-lg-0 overflow-hidden">
 				<div class="form-group">
-					<label for="officeSelection">Delivery office:</label> <select id="officeSelection" name="officeReturnCode" class="form-control" required>
+					<label for="officeSelection">Delivery office:</label> <select id="officeSelection" name="officeReturnCode" class="form-control">
 						<option value="">Select...</option>
 						<option th:each="office:${offices}" th:value="${office.officeCode}" th:text="${office.officeName}" th:selected="${office.officeCode == session.reservation.officeCode}"></option>
 					</select>
@@ -74,14 +74,14 @@
 			<div class="col-12 col-lg pb-3 pb-lg-0 overflow-hidden">
 				<div class="form-group">
 					<label for="initDate">Pickup date:</label>
-					<input class="form-control w-100" type="date" name="initDate" id="initDate" step="1" min="2019-06-01" max="2020-06-01" value="2019-06-01" required>
+					<input class="form-control w-100" type="date" name="initDate" id="initDate" step="1" min="2019-06-01" max="2020-06-01" th:value="${#dates.format(session.reservation.initDate, 'yyyy-MM-dd')}">
 				</div>
 			</div>
 			<div class="col-12 col-lg pb-3 pb-lg-0 overflow-hidden">
 
 				<div class="form-group">
 					<label for="finalDate">Delivery date:</label>
-					<input class="form-control w-100" type="date" name="finalDate" id="finalDate" step="1" min="2019-06-01" max="2020-06-01" value="2019-06-01" required>
+					<input class="form-control w-100" type="date" name="finalDate" id="finalDate" step="1" min="2019-06-01" max="2020-06-01" th:value="${#dates.format(session.reservation.finalDate, 'yyyy-MM-dd')}">
 					<!-- 				<input type="text" required> -->
 					<div th:if="${session.errorDates != null}">
 						<small class="form-text text-muted" th:text="${session.errorDates}"></small>
@@ -142,7 +142,7 @@
 				<tr class="row mb-3" th:each="car:${session.fleet}">
 					<td class="col-12 col-md-6">
 						<div class="h-100 d-flex align-items-center flex-column p-3">
-							<img style="max-width: 320px;" class="w-100 my-auto" th:src="@{${car.photo}}" />
+							<img style="max-width: 320px;" class="my-auto" th:src="@{${car.photo}}" />
 						</div>
 					</td>
 					<td class="col-12 col-md-4">
@@ -165,7 +165,7 @@
 							<div class="h-100 d-flex align-items-center">
 								<Strong th:inline="text"> [[${car.category.priceBase}]]€ <small class="float-right pr-2">&nbsp per day</small></strong>
 							</div>
-							<a th:href="@{selectCar(id=${car.idCar})}" class="btn btn-sm font-weight-bold mt-auto">Choose</a>
+							<a th:href="@{selectCar(id=${car.idCar})}" class="btn btn-sm mt-auto w-100">Choose</a>
 						</div>
 					</td>
 				</tr>
