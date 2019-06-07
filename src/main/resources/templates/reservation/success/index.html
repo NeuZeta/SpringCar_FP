@@ -10,15 +10,30 @@
 	<div class="row align-items-center">
 		<div class="col-12 col-md-9 col-lg-7 mx-auto">
 			<div class="card my-5">
-				<img class="card-img-top" th:src="@{${session.car.photo}}" alt="Card image cap">
+
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item bg-light spring-green-dark">
+
+					<li class="list-group-item">
+
+						<div class="row align-items-center">
+							<div class="col-8">
+								<img class="" th:src="@{${session.car.photo}}" alt="Card image cap">
+							</div>
+
+							<div class="col-4 text-center">
+								<i class="fas fa-check-circle spring-green-ligth" style="font-size: 100px;"></i>
+							</div>
+						</div>
+
+
+
+					</li>
+
+					<li class="list-group-item bg-light spring-green-ligth">
 
 						<div class="card-title text-center h1">
-							<i class="mr-3 fas fa-check-circle spring-green-ligth"></i><span>Congratulations 
-						</div>
-						<div class="card-title text-center h1">
-							<span th:text="${session.client.name}"></span>!</span>
+							<span>Congratulations <span th:text="${session.client.name}"></span>!
+							</span>
 						</div>
 
 					</li>
