@@ -35,7 +35,7 @@ public class HomeController {
 			session.setAttribute("errorDates", "Pick up date must be before return date!");
 			return "redirect:/"; 
 		}
-		return "redirect:/reservation/vehicleselect/";
+		return "redirect:/reservation/vehicleselect";
 	}
 	
 	public boolean initDateIsBeforeFinalDate(Reservation rent) {

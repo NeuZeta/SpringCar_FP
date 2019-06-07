@@ -7,30 +7,47 @@
 
 <div layout:fragment="page_content" id="page_content" class="container h-100 bg-white overflow-hidden">
 
-	<!-- CONFIRMATION MESSAGE. CHEQUEAR NOMBRES VARIABLES DE LA RESERVA FINAL -->
+	<div class="row align-items-center">
+		<div class="col-12 col-md-9 col-lg-7 mx-auto">
+			<div class="card my-5">
+				<img class="card-img-top" th:src="@{${session.car.photo}}" alt="Card image cap">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item bg-light spring-green-dark">
 
-	<div class="mt-5 mb-5 text-center">
-		<img src="/images/logo_alpha.png" class="img-fluid max-width: 100% height: auto" alt="Spring Car company logo">
-	</div>
+						<div class="card-title text-center h1">
+							<i class="mr-3 fas fa-check-circle spring-green-ligth"></i><span>Congratulations 
+						</div>
+						<div class="card-title text-center h1">
+							<span th:text="${session.client.name}"></span>!</span>
+						</div>
 
-	<div class="row mt-5">
-		<div class="h3 col-12 text-center">
-			Congratulations <span th:text="${session.client.name}"></span>! We have correctly received your booking.<br> These are your booking details:
+					</li>
 
+					<li class="list-group-item">
+						<h5 class="card-title">
+							We have correctly received your booking.<br> These are your booking details:
+						</h5>
+
+						<div class="card-text">
+							We will be waiting for you at our SpringCar office: <span class="text-muted" th:text="${session.officeName}"></span>
+						</div>
+						<div class="card-text">
+							Booking date: <span class="text-muted" th:text="${#dates.format(session.reservation.initDate, 'dd-MM-yyyy')}"></span>
+						</div>
+						<div class="card-text">
+							Booking number: <span class="text-muted" th:text="${session.reservation.idReservation}"></span>
+						</div>
+
+					</li>
+
+					<li class="list-group-item p-0"><a class="btn btn-lg btn-primary btn-block text-uppercase" href="/reservation/confirmation">Confirm</a></li>
+				</ul>
+
+			</div>
 		</div>
 	</div>
 
-	<div class="row offset-2 ml-3 mr-3 mb-5">
-		<div id="rentalDetails" class="col-6 offset-md-3 text-center">
-			We will be waiting for you at our SpringCar office: <span class="variableRentalDetails" th:text="${session.officeName}"></span>
-		</div>
-		<div id="rentalDetails" class="col-6 offset-md-3 text-center">
-			Booking date: <span th:text="${#dates.format(session.reservation.initDate, 'dd-MM-yyyy')}"></span>
-		</div>
-		<div id="rentalDetails" class="col-6 offset-md-3 text-center">
-			Booking number: <span th:text="${session.reservation.idReservation}"></span>
-		</div>
-	</div>
+
 </div>
 
 <th:block layout:fragment="scripts">

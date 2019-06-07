@@ -23,30 +23,60 @@
 	<!-- CUSTOMER DETAILS -->
 
 	<div th:if="${session.client != null}" class="row align-items-center">
-		<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+		<div class="col-12">
 			<div class="card my-5">
 				<div class="card-body">
-					<h5 class="card-title text-center">Driver Details</h5>
-					<div class="form-group">
-						<label>First Name</label>
-						<span class="px-3 py-2 d-block text-muted bg-light" th:text="${session.client.name}"></span>
+					<h5 class="card-title text-left">Driver Details</h5>
+					<div class="row pb-md-3">
+						<div class="col-12 col-lg-6">
+							<ul class="list-group list-group-flush text-dark">
+								<li class="list-group-item bg-transparent">
+									<div class="row">
+										<div class="col-6 text-truncate">First Name</div>
+										<div class="col-6 text-truncate" th:text="${session.client.name}"></div>
+									</div>
+								</li>
+								<li class="list-group-item bg-transparent">
+									<div class="row">
+										<div class="col-6 text-truncate">Last Name</div>
+										<div class="col-6 text-truncate" th:text="${session.client.surname}"></div>
+									</div>
+								</li>
+								<li class="list-group-item bg-transparent">
+									<div class="row">
+										<div class="col-6 text-truncate">ID Number</div>
+										<div class="col-6 text-truncate" th:text="${session.client.idNumber}"></div>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+
+						<div class="col-12 col-lg-6">
+							<ul class="list-group list-group-flush text-dark">
+								<li class="list-group-item bg-transparent">
+									<div class="row">
+										<div class="col-6 text-truncate">Phone Number</div>
+										<div class="col-6 text-truncate" th:text="${session.client.phoneNumber}"></div>
+									</div>
+								</li>
+
+								<li class="list-group-item bg-transparent">
+									<div class="row">
+										<div class="col-6">City</div>
+										<div class="col-6" th:text="${session.client.city}"></div>
+									</div>
+								</li>
+								<li class="list-group-item bg-transparent">
+									<div class="row">
+										<div class="col-6">Postal Code</div>
+										<div class="col-6" th:text="${session.client.postCode}"></div>
+									</div>
+								</li>
+							</ul>
+						</div>
 					</div>
-					<div class="form-group">
-						<label>Last Name</label>
-						<span class="px-3 py-2 d-block text-muted bg-light" th:text="${session.client.surname}"></span>
-					</div>
-					<div class="form-group">
-						<label>ID Number</label>
-						<span class="px-3 py-2 d-block text-muted bg-light" th:text="${session.client.idNumber}"></span>
-					</div>
-					<div class="form-group">
-						<label>Phone Number</label>
-						<span class="px-3 py-2 d-block text-muted bg-light" th:text="${session.client.phoneNumber}"></span>
-					</div>					
-					<div class="form-group">
-						<label>E-mail</label>
-						<span class="px-3 py-2 d-block text-muted bg-light" th:text="${session.client.email}"></span>
-					</div>
+
 				</div>
 			</div>
 		</div>

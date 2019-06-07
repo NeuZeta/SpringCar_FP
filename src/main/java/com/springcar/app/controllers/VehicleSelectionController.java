@@ -57,11 +57,13 @@ public class VehicleSelectionController {
 	
 	@GetMapping("/reservation/vehicleselect/selectCar")
 	public String showPeriodSelector(HttpSession session, @RequestParam("id") Long idCar) {
+		
 		session.setAttribute("car", carService.findById(idCar));
 		Reservation rent = (Reservation) session.getAttribute("reservation");
 		rent.setCarCategory(carService.findById(idCar).getCategory().getCodCategory());
 		session.setAttribute("reservation", rent);
-		return "redirect:/reservation/extrasconfig/";
+		
+		return "redirect:/reservation/extrasconfig";
 	}
 	
 	@PostMapping("/reservation/vehicleselect")
@@ -91,7 +93,7 @@ public class VehicleSelectionController {
 			return "/reservation/dateselection/index"; 
 		}
 		
-		return "redirect:/reservation/vehicleselect/";
+		return "redirect:/reservation/vehicleselect";
 	}
 	
 	public boolean initDateIsBeforeFinalDate(Reservation rent) {
