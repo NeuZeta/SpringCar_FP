@@ -1,7 +1,7 @@
 # SpringCar Final Project
   
 The project's goal was to simulate a car renting website.
-This is a two weeks project using Spring Boot, Thymeleaf, JPA, MySQL and '''H2. 
+This is a two weeks project using Spring Boot, Thymeleaf, JPA, MySQL and H2. 
   
 [![image](https://drive.google.com/uc?export=view&id=18Msw-Tx00OI9JhDgpLJrwlyIbjAzLME7)](https://www.youtube.com/watch?v=nLMVODLCplk&t=2s)
 
